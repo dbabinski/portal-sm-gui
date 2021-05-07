@@ -1,0 +1,96 @@
+.view-kody-jednorazowe {
+}
+.view-kody-jednorazowe table.kody {
+    border-collapse: collapse;
+    width: 100%
+}
+.view-kody-jednorazowe table.kody th {
+    text-align: left;
+}
+.view-kody-jednorazowe table.kody th,
+.view-kody-jednorazowe table.kody td {
+    padding: 0.25em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #CCC;
+}
+.view-kody-jednorazowe table.kody th {
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+.view-kody-jednorazowe table.kody tr:nth-child(2) td {
+    padding-top: 0.5em;
+}
+.view-kody-jednorazowe .button-fill {
+    display: block;
+}
+.view-kody-jednorazowe table.kody td.right {
+    text-align: left;
+}
+.view-kody-jednorazowe table.kody td.center {
+    text-align: center;
+}
+.view-kody-jednorazowe table.kody td.button-td {
+    width: 1%;
+    white-space: nowrap;
+}
+.view-kody-jednorazowe table.kody span {
+    display: none;
+    color: var(--main-low-visibility-color);
+    font-weight: normal;
+    padding-right: 1em;
+    align-self: center;
+}
+.view-kody-jednorazowe table.kody .lp {
+    color: var(--main-low-visibility-color)
+}
+.view-kody-jednorazowe .filter {
+    padding-bottom: 1em;
+}
+.view-kody-jednorazowe .footer {
+    display: flex;
+}
+.view-kody-jednorazowe .record-counter {
+    white-space: nowrap;
+    padding: 0.5em;
+    color: var(--main-low-visibility-color)
+}
+.view-kody-jednorazowe .load-button-container {
+    width: 100%;
+    text-align: center;
+    padding: 0.5em;
+}
+@media (max-width: 950px) {
+    .view-kody-jednorazowe table.kody th {
+        display: none;
+        border-bottom: none;
+        padding-right: 0px;
+    }
+    .view-kody-jednorazowe table.kody th.button-td {
+        display: flex;
+        margin-left: auto;
+    }
+    .view-kody-jednorazowe table.kody tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #CCC;
+    }
+    .view-kody-jednorazowe table.kody td {
+        width: calc(50% - 1rem);
+        border-bottom: none;
+    }
+    .view-kody-jednorazowe table.kody span {
+        display: block;
+    }
+    .view-kody-jednorazowe table.kody .button-td {
+        padding-bottom: 0.5em;
+    }
+}
+@media (max-width: 450px) {
+    .view-kody-jednorazowe table.kody td {
+        width: 100%;
+    }
+}

@@ -1,0 +1,37 @@
+.form-wybor-niepowiazane-konto .row {
+    display: table-row;
+}
+.form-wybor-niepowiazane-konto .cell {
+    display: table-cell;
+}
+.form-wybor-niepowiazane-konto input,
+.form-wybor-niepowiazane-konto .ui-menu {
+    width: 30em;
+}
+.form-wybor-niepowiazane-konto .ui-menu-container {
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+    box-shadow: var(--main-button-box-shadow);
+}
+.form-wybor-niepowiazane-konto .ui-menu {
+    list-style-type: none;
+    margin: 0;
+    padding-inline-start: 0;
+    border: var(--main-dialog-border);
+}
+.form-wybor-niepowiazane-konto .list-element {
+    padding: 0.5em;
+    margin: 0;
+}
+.form-wybor-niepowiazane-konto .list-element:hover {
+    cursor: pointer;
+}
+.form-wybor-niepowiazane-konto .list-element:focus {
+    color: var(--main-button-color-hover);
+    background-color: var(--main-button-background-hover);
+    outline: none;
+}
+.form-wybor-niepowiazane-konto .hide {
+    display: none;
+}

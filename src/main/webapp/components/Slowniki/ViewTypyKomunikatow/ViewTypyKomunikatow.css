@@ -1,0 +1,77 @@
+.view-typy-komunikatow {
+}
+.view-typy-komunikatow table.typy-komunikatow {
+    border-collapse: collapse;
+    width: 100%
+}
+.view-typy-komunikatow table.typy-komunikatow th {
+    text-align: left;
+}
+.view-typy-komunikatow table.typy-komunikatow th,
+.view-typy-komunikatow table.typy-komunikatow td {
+    padding: 0.25em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #CCC;
+}
+.view-typy-komunikatow table.typy-komunikatow th {
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+.view-typy-komunikatow table.typy-komunikatow tr:nth-child(2) td {
+    padding-top: 0.5em;
+}
+.view-typy-komunikatow .button-fill {
+    display: block;
+}
+.view-typy-komunikatow table.typy-komunikatow td.right {
+    text-align: left;
+}
+.view-typy-komunikatow table.typy-komunikatow td.center {
+    text-align: center;
+}
+.view-typy-komunikatow table.typy-komunikatow td.button-td {
+    width: 1%;
+    white-space: nowrap;
+}
+.view-typy-komunikatow table.typy-komunikatow span {
+    display: none;
+    color: var(--main-low-visibility-color);
+    font-weight: normal;
+    padding-right: 1em;
+    align-self: center;
+}
+@media (max-width: 950px) {
+    .view-typy-komunikatow table.typy-komunikatow th {
+        display: none;
+        border-bottom: none;
+        padding-right: 0px;
+    }
+    .view-typy-komunikatow table.typy-komunikatow th.button-td {
+        display: flex;
+        margin-left: auto;
+    }
+    .view-typy-komunikatow table.typy-komunikatow tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #CCC;
+    }
+    .view-typy-komunikatow table.typy-komunikatow td {
+        width: calc(50% - 1rem);
+        border-bottom: none;
+    }
+    .view-typy-komunikatow table.typy-komunikatow span {
+        display: block;
+    }
+    .view-typy-komunikatow table.typy-komunikatow .button-td {
+        padding-bottom: 0.5em;
+    }
+}
+@media (max-width: 450px) {
+    .view-typy-komunikatow table.typy-komunikatow td {
+        width: 100%;
+    }
+}

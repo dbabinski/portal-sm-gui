@@ -1,0 +1,97 @@
+.form-uzytkownicy-konto .grid {
+    display: grid;    
+    grid-template-columns: max-content auto;
+    align-items: center;
+}
+.form-uzytkownicy-konto input,
+.form-uzytkownicy-konto select {
+    width: 100%;
+}
+.form-uzytkownicy-konto input[type='checkbox'] {
+    width: min-content;
+}
+.form-uzytkownicy-konto table.konta {
+    border-collapse: collapse;    
+    width: 100% 
+}
+.form-uzytkownicy-konto table.konta th {
+    text-align: left;
+}
+.form-uzytkownicy-konto table.konta th, 
+.form-uzytkownicy-konto table.konta td {            
+    padding: 0.25em;    
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #CCC;  
+}
+.form-uzytkownicy-konto table.konta th {
+    font-weight: 500;
+    border-bottom: 1px solid black;  
+    padding-bottom: 0.5em;  
+}
+.form-uzytkownicy-konto table.konta tr:nth-child(2) td {
+    padding-top: 0.5em;
+}
+.form-uzytkownicy-konto .button-fill {
+    display: block;
+}
+.form-uzytkownicy-konto table.konta td.right {
+    text-align: left;
+}
+.form-uzytkownicy-konto table.konta td.center {
+    text-align: center;
+}
+.form-uzytkownicy-konto table.konta td.button-td {
+    width: 1%;
+}
+.form-uzytkownicy-konto table.konta td.notactive {
+    color: var(--main-low-visibility-color);
+}
+.form-uzytkownicy-konto .row-container {
+    margin-top: 1em;    
+}
+.form-uzytkownicy-konto table.konta span {
+    display: none;
+    color: var(--main-low-visibility-color);
+    font-weight: normal;
+    padding-right: 1em;
+    align-self: center;
+}
+.icon-blue,
+.icon-red {
+    width: 1rem;
+    padding-right: 0.5em;
+}
+@media (max-width: 950px) {
+    .form-uzytkownicy-konto table.konta th {
+        display: none;
+        border-bottom: none;
+        padding-right: 0px;
+    }
+    .form-uzytkownicy-konto table.konta th.button-td {
+        display: flex;
+        margin-left: auto;
+    }
+    .form-uzytkownicy-konto table.konta tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #CCC;
+    }
+    .form-uzytkownicy-konto table.konta td {
+        width: calc(50% - 1rem);
+        border-bottom: none;
+    }
+    .form-uzytkownicy-konto table.konta span {
+        display: block;
+    }
+    .form-uzytkownicy-konto table.konta .button-td {
+        padding-bottom: 0.5em;
+    }
+}
+@media (max-width: 450px) {
+    .form-uzytkownicy-konto table.konta td {
+        width: 100%;
+    }
+}

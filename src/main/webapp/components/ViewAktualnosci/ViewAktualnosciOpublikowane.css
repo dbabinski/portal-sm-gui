@@ -1,0 +1,31 @@
+.view-aktualnosci-opublikowane {    
+}
+
+.view-aktualnosci-opublikowane .title {
+    font-family: Roboto-Slab;
+    font-size: 1.5em;
+    font-weight: 500;    
+    padding-bottom: 0.5em;
+    color: var(--main-accent-color);
+}
+
+.view-aktualnosci-opublikowane .article:not(:last-of-type) {
+    margin-bottom: 1em;
+}
+
+.view-aktualnosci-opublikowane .content {
+    padding-top: 0.5em;
+}
+
+.view-aktualnosci-opublikowane .content p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.view-aktualnosci-opublikowane .content p:not(:last-of-type) {
+    margin-bottom: 0.5em;
+}
+
+.view-aktualnosci-opublikowane .meta {
+    color: var(--main-accent-color);
+}

@@ -1,0 +1,13 @@
+.form-kod-jednorazowy .grid {
+    display: grid;    
+    grid-template-columns: max-content auto;
+    align-items: center;
+}
+.form-kod-jednorazowy input {    
+    width: 100%;    
+}
+.form-kod-jednorazowy .grid-button {    
+    grid-template-columns: auto max-content;    
+    column-gap: 0.5em;    
+}
+

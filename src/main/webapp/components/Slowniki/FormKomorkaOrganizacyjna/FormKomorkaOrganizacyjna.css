@@ -1,0 +1,13 @@
+.form-komorka-organizacyjna .grid {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+}
+.form-komorka-organizacyjna input,
+.form-komorka-organizacyjna textarea,
+.form-komorka-organizacyjna select {
+    width: 100%;
+}
+.form-komorka-organizacyjna .uwaga {
+    color: var( --main-error-message-color);
+}

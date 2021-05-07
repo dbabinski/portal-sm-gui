@@ -1,0 +1,10 @@
+.view-konto-numer-telefonu .grid {
+    display: grid;    
+    grid-template-columns: min-content auto;
+    align-items: center;
+}
+
+.view-konto-numer-telefonu input,
+.view-konto-numer-telefonu select {
+    width: 100%;
+}

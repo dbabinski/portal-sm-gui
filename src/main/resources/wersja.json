@@ -1,0 +1,5 @@
+{
+    "name": "SM-Portal-GUI",
+    "version": "${project.version}",
+    "date": "${build.timestamp}"
+}

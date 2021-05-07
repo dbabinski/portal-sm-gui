@@ -1,0 +1,10 @@
+.view-konto-adres-email .grid {
+    display: grid;    
+    grid-template-columns: min-content auto;
+    align-items: center;
+}
+
+.view-konto-adres-email input,
+.view-konto-adres-email select {
+    width: 100%;
+}

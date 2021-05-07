@@ -1,0 +1,8 @@
+.form-uzytkownicy-uprawnienia .grid {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+}
+.form-uzytkownicy-uprawnienia input[type='checkbox'] {
+    width: min-content;
+}

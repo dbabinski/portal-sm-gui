@@ -1,0 +1,30 @@
+.view-portal {
+    box-shadow: var(--main-dialog-box-shadow);
+}
+.view-portal .portal-header-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    background-color: var(--menu-main-background-color);
+    z-index: 1;
+}
+.view-portal .portal-header {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0.5em;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    background-color: var(--menu-main-background-color);
+}
+.view-portal .portal-content {
+    background-color: white;
+    padding: 1em;
+}
+.view-portal .button-container {
+    margin: auto;
+    margin-right: 0.75em;
+    padding-bottom: 0.25em;
+}

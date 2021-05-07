@@ -1,0 +1,101 @@
+.view-uzytkownicy-konta {
+}
+.view-uzytkownicy-konta table.konta {
+    border-collapse: collapse;
+    width: 100%
+}
+.view-uzytkownicy-konta table.konta th {
+    text-align: left;
+}
+.view-uzytkownicy-konta table.konta th,
+.view-uzytkownicy-konta table.konta td {
+    padding: 0.25em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #CCC;
+}
+.view-uzytkownicy-konta table.konta th {
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+.view-uzytkownicy-konta table.konta tr:nth-child(2) td {
+    padding-top: 0.5em;
+}
+.view-uzytkownicy-konta .button-fill {
+    display: block;
+}
+.view-uzytkownicy-konta table.konta td.right {
+    text-align: left;
+}
+.view-uzytkownicy-konta table.konta td.center {
+    text-align: center;
+}
+.view-uzytkownicy-konta table.konta td.button-td {
+    width: 1%;
+    white-space: nowrap;
+}
+.view-uzytkownicy-konta table.konta td.notactive {
+    color: var(--main-low-visibility-color);
+}
+.view-uzytkownicy-konta table.konta span {
+    display: none;
+    color: var(--main-low-visibility-color);
+    font-weight: normal;
+    padding-right: 1em;
+    align-self: center;
+}
+.view-uzytkownicy-konta .filter {
+    padding-bottom: 1em;
+}
+.view-uzytkownicy-konta .footer {
+    display: flex;
+}
+.view-uzytkownicy-konta .record-counter {
+    white-space: nowrap;
+    padding: 0.5em;
+    color: var(--main-low-visibility-color)
+}
+.view-uzytkownicy-konta .load-button-container {
+    width: 100%;
+    text-align: center;
+    padding: 0.5em;
+}
+.icon-blue,
+.icon-red {
+    width: 1rem;
+    padding-right: 0.5em;
+}
+@media (max-width: 950px) {
+    .view-uzytkownicy-konta table.konta th {
+        display: none;
+        border-bottom: none;
+        padding-right: 0px;
+    }
+    .view-uzytkownicy-konta table.konta th.button-td {
+        display: flex;
+        margin-left: auto;
+    }
+    .view-uzytkownicy-konta table.konta tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #CCC;
+    }
+    .view-uzytkownicy-konta table.konta td {
+        width: calc(50% - 1rem);
+        border-bottom: none;
+    }
+    .view-uzytkownicy-konta table.konta span {
+        display: block;
+    }
+    .view-uzytkownicy-konta table.konta .button-td {
+        padding-bottom: 0.5em;
+    }
+}
+@media (max-width: 450px) {
+    .view-uzytkownicy-konta table.konta td {
+        width: 100%;
+    }
+}

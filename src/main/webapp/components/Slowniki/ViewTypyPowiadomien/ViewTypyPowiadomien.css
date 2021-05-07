@@ -1,0 +1,77 @@
+.view-typy-powiadomien {
+}
+.view-typy-powiadomien table.typy-powiadomien {
+    border-collapse: collapse;
+    width: 100%
+}
+.view-typy-powiadomien table.typy-powiadomien th {
+    text-align: left;
+}
+.view-typy-powiadomien table.typy-powiadomien th,
+.view-typy-powiadomien table.typy-powiadomien td {
+    padding: 0.25em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #CCC;
+}
+.view-typy-powiadomien table.typy-powiadomien th {
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+.view-typy-powiadomien table.typy-powiadomien tr:nth-child(2) td {
+    padding-top: 0.5em;
+}
+.view-typy-powiadomien .button-fill {
+    display: block;
+}
+.view-typy-powiadomien table.typy-powiadomien td.right {
+    text-align: left;
+}
+.view-typy-powiadomien table.typy-powiadomien td.center {
+    text-align: center;
+}
+.view-typy-powiadomien table.typy-powiadomien td.button-td {
+    width: 1%;
+    white-space: nowrap;
+}
+.view-typy-powiadomien table.typy-powiadomien span {
+    display: none;
+    color: var(--main-low-visibility-color);
+    font-weight: normal;
+    padding-right: 1em;
+    align-self: center;
+}
+@media (max-width: 950px) {
+    .view-typy-powiadomien table.typy-powiadomien th {
+        display: none;
+        border-bottom: none;
+        padding-right: 0px;
+    }
+    .view-typy-powiadomien table.typy-powiadomien th.button-td {
+        display: flex;
+        margin-left: auto;
+    }
+    .view-typy-powiadomien table.typy-powiadomien tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #CCC;
+    }
+    .view-typy-powiadomien table.typy-powiadomien td {
+        width: calc(50% - 1rem);
+        border-bottom: none;
+    }
+    .view-typy-powiadomien table.typy-powiadomien span {
+        display: block;
+    }
+    .view-typy-powiadomien table.typy-powiadomien .button-td {
+        padding-bottom: 0.5em;
+    }
+}
+@media (max-width: 450px) {
+    .view-typy-powiadomien table.typy-powiadomien td {
+        width: 100%;
+    }
+}

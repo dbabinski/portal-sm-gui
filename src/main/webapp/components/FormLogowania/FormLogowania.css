@@ -1,0 +1,22 @@
+.form-logowania .grid {
+    display: grid;    
+    grid-template-columns: max-content auto;
+    align-items: center;
+}
+.form-logowania .wartosci-kolumny {
+    margin-top: 1em;
+    display: grid;    
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.form-logowania .wartosci {
+    margin-top: 1em;
+}
+.form-logowania .value {
+    overflow-wrap: anywhere;
+}
+.form-logowania .wartosci-lista {
+    margin-left: 0.5em;
+}
+.form-logowania .label {
+    color: var(--main-low-visibility-color);
+}

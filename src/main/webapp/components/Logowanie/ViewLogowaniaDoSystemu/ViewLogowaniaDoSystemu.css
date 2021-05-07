@@ -1,0 +1,93 @@
+.view-logowania-do-systemu {
+}
+.view-logowania-do-systemu table.logi {
+    border-collapse: collapse;
+    width: 100%
+}
+.view-logowania-do-systemu table.logi th {
+    text-align: left;
+}
+.view-logowania-do-systemu table.logi th,
+.view-logowania-do-systemu table.logi td {
+    padding: 0.25em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #CCC;
+}
+.view-logowania-do-systemu table.logowania th {
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+.view-logowania-do-systemu table.logowania tr:nth-child(2) td {
+    padding-top: 0.5em;
+}
+.view-logowania-do-systemu .button-fill {
+    display: block;
+}
+.view-logowania-do-systemu table.logowania td.right {
+    text-align: left;
+}
+.view-logowania-do-systemu table.logowania td.center {
+    text-align: center;
+}
+.view-logowania-do-systemu table.logowania td.button-td {
+    width: 1%;
+    white-space: nowrap;
+}
+.view-logowania-do-systemu table.logowania span {
+    display: none;
+    color: var(--main-low-visibility-color);
+    font-weight: normal;
+    padding-right: 1em;
+    align-self: center;
+}
+.view-logowania-do-systemu .footer {
+    display: flex;
+}
+.view-logowania-do-systemu .record-counter {
+    white-space: nowrap;
+    padding: 0.5em;
+    color: var(--main-low-visibility-color)
+}
+.view-logowania-do-systemu .load-button-container {
+    width: 100%;
+    text-align: center;
+    padding: 0.5em;
+}
+.view-logowania-do-systemu .filter {
+    padding-bottom: 1em;
+}
+@media (max-width: 950px) {
+    .view-logowania-do-systemu table.logowania th {
+        display: none;
+        border-bottom: none;
+        padding-right: 0px;
+    }
+    .view-logowania-do-systemu table.logowania th.button-td {
+        display: flex;
+        margin-left: auto;
+    }
+    .view-logowania-do-systemu table.logowania tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #CCC;
+    }
+    .view-logowania-do-systemu table.logowania td {
+        width: calc(50% - 1rem);
+        border-bottom: none;
+    }
+    .view-logowania-do-systemu table.logowania span {
+        display: block;
+    }
+    .view-logowania-do-systemu table.logowania .button-td {
+        padding-bottom: 0.5em;
+    }
+}
+@media (max-width: 450px) {
+    .view-logowania-do-systemu table.logowania td {
+        width: 100%;
+    }
+}

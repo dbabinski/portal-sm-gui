@@ -1,0 +1,133 @@
+:root {
+    --form-width: 800px;
+}
+
+label,
+input,
+textarea,
+select {
+    font-size: inherit;
+    font-family: inherit;
+    vertical-align: middle;
+    display: table-cell;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    box-sizing: border-box;
+}
+
+input:invalid {
+    /* wyłączenie -moz-ui-invalid */
+    box-shadow: none;
+}
+
+label {
+    padding-right: 1em;
+}
+
+input[type=date] {
+    min-width: 115px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date],
+textarea,
+select {
+    border: solid 1px var(--main-dialog-border-color);
+    border-radius: 0.25em;
+    padding: 0.3em;
+    border-right: 5px solid var(--main-dialog-border-color);
+}
+
+input[type=text]:required,
+input[type=password]:required,
+input[type=email]:required,
+input[type=date]:required,
+textarea:required,
+select:required {
+    box-shadow: none;
+    border-right: 5px solid var(--main-required-color);
+}
+
+input[type=text].undecorated,
+input[type=password].undecorated,
+input[type=email].undecorated,
+input[type=date].undecorated,
+textarea.undecorated,
+select.undecorated {
+    border-right: solid 1px var(--main-dialog-border-color);
+}
+
+textarea {
+    height: 5em;
+    overflow: auto;
+}
+
+select{
+    background: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* input[type=number]::-moz-inner-spin-button,
+input[type=number]::-moz-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+} */
+
+input[type=text]:disabled {
+    background-color: var(--main-background-disabled);
+    color: var(--main-color-disabled);
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=date]:focus,
+textarea:focus,
+select:focus{
+    border-color: var(--main-focus-color);
+    outline: none;
+    box-shadow: 0 0 2px rgba(158, 202, 237, 0.25);
+    background-color: #F3F7F9;
+}
+
+input[readonly] {
+    background-color: var(--main-background-disabled);
+}
+input[readonly]:focus {
+    background-color: var(--main-background-disabled);
+}
+
+.select-wrap {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+
+.select-wrap:after {
+    content: "\f0d7 ";
+    font-family: FontAwesome;
+    color: var(--main-low-visibility-color);
+    position: absolute;
+    right: 0;
+    top: 0.75em;
+    z-index: 1;
+    padding-right: 0.8em;
+    height: 100%;
+    pointer-events: none;
+}
+
+.buttons-panel {
+    text-align: right;
+}
+
+.buttons-panel-center {
+    text-align: center;
+}
+
+.uwaga {
+    color: var(--main-error-message-color);
+}

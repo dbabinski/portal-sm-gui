@@ -1,0 +1,14 @@
+.sm-input {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.sm-input input {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sm-input .message {    
+    font-size: 0.9em;
+    color: var( --main-error-message-color);
+}

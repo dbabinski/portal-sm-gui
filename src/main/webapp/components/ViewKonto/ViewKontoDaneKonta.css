@@ -1,0 +1,10 @@
+.view-konto-dane-konta .grid {
+    display: grid;    
+    grid-template-columns: min-content auto;
+    align-items: center;
+}
+
+.view-konto-dane-konta input,
+.view-konto-dane-konta select {
+    width: 100%;
+}

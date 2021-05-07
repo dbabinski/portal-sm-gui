@@ -1,0 +1,36 @@
+.form-pacjent .grid {
+    display: grid;
+    grid-template-columns: min-content auto;
+    align-items: center;
+}
+.form-pacjent-samodzielnie .inline {
+    display: inline-block;
+    width: auto;
+}
+.form-pacjent-samodzielnie input,
+.form-pacjent-samodzielnie textarea,
+.form-pacjent-samodzielnie select {
+    width: 100%;
+}
+.form-pacjent-samodzielnie .select {
+    margin-bottom: 0;
+}
+.form-pacjent-samodzielnie .g-recaptcha {
+    padding-top: 0.3em;
+    display: table-cell;
+}
+.form-pacjent-samodzielnie .a {
+    color: var(--main-button-background);
+    cursor: pointer;
+}
+.form-pacjent-samodzielnie .a:hover {
+    color: var(--main-button-background-hover);
+}
+.form-pacjent-samodzielnie .frame-regulamin {
+    width: 100%;
+    height: 80vh;
+    border: none;
+}
+.form-pacjent-samodzielnie .dialog-regulamin .modal-dialog-content {
+    max-width: var(--form-width);
+}

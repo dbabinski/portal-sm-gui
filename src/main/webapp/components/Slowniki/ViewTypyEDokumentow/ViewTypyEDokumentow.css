@@ -1,0 +1,77 @@
+.view-typy-edokumentow {
+}
+.view-typy-edokumentow table.typy-edokumentow {
+    border-collapse: collapse;
+    width: 100%
+}
+.view-typy-edokumentow table.typy-edokumentow th {
+    text-align: left;
+}
+.view-typy-edokumentow table.typy-edokumentow th,
+.view-typy-edokumentow table.typy-edokumentow td {
+    padding: 0.25em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #CCC;
+}
+.view-typy-edokumentow table.typy-edokumentow th {
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+.view-typy-edokumentow table.typy-edokumentow tr:nth-child(2) td {
+    padding-top: 0.5em;
+}
+.view-typy-edokumentow .button-fill {
+    display: block;
+}
+.view-typy-edokumentow table.typy-edokumentow td.right {
+    text-align: left;
+}
+.view-typy-edokumentow table.typy-edokumentow td.center {
+    text-align: center;
+}
+.view-typy-edokumentow table.typy-edokumentow td.button-td {
+    width: 1%;
+    white-space: nowrap;
+}
+.view-typy-edokumentow table.typy-edokumentow span {
+    display: none;
+    color: var(--main-low-visibility-color);
+    font-weight: normal;
+    padding-right: 1em;
+    align-self: center;
+}
+@media (max-width: 950px) {
+    .view-typy-edokumentow table.typy-edokumentow th {
+        display: none;
+        border-bottom: none;
+        padding-right: 0px;
+    }
+    .view-typy-edokumentow table.typy-edokumentow th.button-td {
+        display: flex;
+        margin-left: auto;
+    }
+    .view-typy-edokumentow table.typy-edokumentow tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #CCC;
+    }
+    .view-typy-edokumentow table.typy-edokumentow td {
+        width: calc(50% - 1rem);
+        border-bottom: none;
+    }
+    .view-typy-edokumentow table.typy-edokumentow span {
+        display: block;
+    }
+    .view-typy-edokumentow table.typy-edokumentow .button-td {
+        padding-bottom: 0.5em;
+    }
+}
+@media (max-width: 450px) {
+    .view-typy-edokumentow table.typy-edokumentow td {
+        width: 100%;
+    }
+}

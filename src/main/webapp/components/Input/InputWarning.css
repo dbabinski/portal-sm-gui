@@ -1,0 +1,5 @@
+.sm-input-warning {    
+    font-size: 0.9em;
+    margin-bottom: 0.25em;
+    color: var( --main-error-message-color);
+}

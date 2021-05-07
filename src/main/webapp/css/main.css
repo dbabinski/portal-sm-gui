@@ -1,0 +1,211 @@
+:root {
+    --main-background-color: #eeeeee;
+    --main-button-background: #36465d;
+    --main-button-background-hover: #3e7aa8;
+    --main-button-background-red: #ad1457;
+    --main-button-background-red-hover: #d81b60;
+    --main-button-background-green: #2e7d32;
+    --main-button-background-green-hover: #43a047;
+    --main-button-background-orange: #e64a19;
+    --main-button-background-orange-hover: #ff5722;
+    --main-button-background-grey: #999;
+    --main-button-color: #dddddd;
+    --main-button-color-hover: #ffffff;
+    --main-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+    --main-button-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    --main-dialog-box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+    --main-dialog-background: white;
+    --main-dialog-border-color: #ccc;
+    --main-dialog-border: 1px solid var(--main-dialog-border-color);
+    --main-dialog-border-radius: 0.3em;
+    --main-dialog-padding: 1.2em;
+    --main-dialog-margin: 1.2em;
+    --main-accent-color: #36465d;
+    --main-focus-color: #009acd;
+    --main-required-color: #00796B;
+    --main-error-message-color: var(--main-button-background-red);
+    --main-question-message-color: black;
+    --main-warning-message-color: var(--main-button-background-orange);
+    --main-low-visibility-color: #777777;
+    --main-background-disabled: #EEE;
+    --main-color-disabled: #999;
+    --main-width: 1200px;
+    --main-dialog-width: 400px;
+    --main-lighter-color: #444;
+    --main-button-min-width: 4em;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    background-color: var(--main-background-color);
+    color: black;
+    /* user-select: none; */
+    /* -webkit-user-select: none; */
+    margin: 0;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+hr {
+    border-top: 1px solid black;
+    border-bottom: none;
+}
+
+.app-container {
+    display: flex;
+}
+
+.app {
+    margin: auto;
+    width: calc(100% - 1rem);
+    max-width: var(--main-width);
+}
+
+.margin-top {
+    margin-top: 0.5em;
+}
+
+.margin-top-2x {
+    margin-top: 1em;
+}
+
+.margin-bottom {
+    margin-bottom: 0.5em;
+}
+
+.margin-bottom-2x {
+    margin-bottom: 1em;
+}
+
+.margin-right {
+    margin-right: 0.5em;
+}
+
+.margin-right-2x {
+    margin-right: 1em;
+}
+
+.margin-right-3x {
+    margin-right: 1.5em;
+}
+
+.margin-left {
+    margin-left: 0.5em;
+}
+
+.margin-left-2x {
+    margin-left: 1em;
+}
+
+.margin-left-3x {
+    margin-left: 1.5em;
+}
+
+.padding-bottom {
+    padding-bottom: 0.5em;
+}
+
+.padding-bottom-2x {
+    padding-bottom: 1em;
+}
+
+.code {
+    font-family: monospace;
+}
+
+.icon-blue {
+    color: var(--main-button-background);
+}
+
+.icon-green {
+    color: var(--main-button-background-green);
+}
+
+.icon-red {
+    color: var(--main-button-background-red);
+}
+
+.icon-orange {
+    color: var(--main-button-background-orange);
+}
+
+.error-message {
+    color: var(--main-error-message-color);
+}
+
+.question-message {
+    color: var(--main-question-message-color);
+}
+
+.warning-message {
+    color: var(--main-warning-message-color);
+}
+
+.warning-icon {
+    color: var(--main-button-background-orange);
+}
+
+.bold {
+    font-weight: 500;
+}
+
+.low-visibility {
+    color: var(--main-low-visibility-color);
+}
+
+.low-visibility-icon {
+    color: silver;
+}
+
+.separator-title {
+    white-space: nowrap;
+    padding-right: 0.5em;
+    vertical-align: middle;
+}
+.separator-line {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.hidden {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.to-do {
+    background: repeating-linear-gradient(-45deg, rgba(192,192,192,0.5), rgba(192,192,192,0.5) 5px, rgba(0,0,0,0) 5px, rgba(0,0,0,0) 10px);
+}
+
+.view-header {
+    font-family: Roboto-Slab;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-bottom: 0.5em;
+    color: var(--main-accent-color);
+}
+
+.monospace {
+    font-family: Roboto-Mono, monospace;
+}
+
+.fas {
+    width: 1em;
+}
+
+.nowrap {
+    white-space: nowrap;
+}

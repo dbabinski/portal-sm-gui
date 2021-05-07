@@ -1,0 +1,38 @@
+.sm-filter-dates {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.sm-filter-dates .icon {
+    font-size: 1.2rem;
+    padding-left: 0.6em;
+    color: var(--main-button-background);
+    cursor: pointer;
+    text-shadow: var(--main-text-shadow);
+}
+
+.sm-filter-dates .icon:hover {
+    color: var(--main-button-background-hover);
+}
+
+.sm-filter-dates .filter-contener {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.sm-filter-dates .filter-contener input[type=text] {
+    flex-grow: 1;
+}
+
+.sm-filter-dates .margin-right {
+    margin-right: 1em;
+}
+
+.sm-filter-dates .grow {
+    flex-grow: 1;
+}

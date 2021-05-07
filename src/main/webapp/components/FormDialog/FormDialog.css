@@ -1,0 +1,48 @@
+.sm-form-dialog {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    user-select: none;
+}
+
+.sm-form-dialog .form-dialog-container {
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: safe center;
+    width: 100%;    
+    height: 100%;
+}
+
+.sm-form-dialog .form-dialog-content {
+    width: 100%;
+    max-width: var(--form-width);
+    background-color: var(--main-dialog-background);
+    padding: var(--main-dialog-padding);
+    margin: auto;
+    box-shadow: var(--main-dialog-box-shadow);
+    display: block;
+    border: var(--main-dialog-border);
+    border-radius: var(--main-dialog-border-radius);    
+}
+
+.sm-form-dialog .form-dialog-header {
+    font-family: Roboto-Slab;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-bottom: 0.5em;
+    color: var(--main-accent-color);
+}
+
+.sm-form-dialog .sub-header {
+    font-family: Roboto-Slab;
+    font-size: 1.15em;
+    font-weight: 500;
+    padding-bottom: 0.25em;
+    color: var(--main-accent-color);
+}

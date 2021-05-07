@@ -1,0 +1,77 @@
+.view-komorki-organizacyjne {
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne {
+    border-collapse: collapse;
+    width: 100%
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne th {
+    text-align: left;
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne th,
+.view-komorki-organizacyjne table.komorki-organizacyjne td {
+    padding: 0.25em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    vertical-align: middle;
+    border-bottom: 1px solid #CCC;
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne th {
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne tr:nth-child(2) td {
+    padding-top: 0.5em;
+}
+.view-komorki-organizacyjne .button-fill {
+    display: block;
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne td.right {
+    text-align: left;
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne td.center {
+    text-align: center;
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne td.button-td {
+    width: 1%;
+    white-space: nowrap;
+}
+.view-komorki-organizacyjne table.komorki-organizacyjne span {
+    display: none;
+    color: var(--main-low-visibility-color);
+    font-weight: normal;
+    padding-right: 1em;
+    align-self: center;
+}
+@media (max-width: 950px) {
+    .view-komorki-organizacyjne table.komorki-organizacyjne th {
+        display: none;
+        border-bottom: none;
+        padding-right: 0px;
+    }
+    .view-komorki-organizacyjne table.komorki-organizacyjne th.button-td {
+        display: flex;
+        margin-left: auto;
+    }
+    .view-komorki-organizacyjne table.komorki-organizacyjne tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #CCC;
+    }
+    .view-komorki-organizacyjne table.komorki-organizacyjne td {
+        width: calc(50% - 1rem);
+        border-bottom: none;
+    }
+    .view-komorki-organizacyjne table.komorki-organizacyjne span {
+        display: block;
+    }
+    .view-komorki-organizacyjne table.komorki-organizacyjne .button-td {
+        padding-bottom: 0.5em;
+    }
+}
+@media (max-width: 450px) {
+    .view-komorki-organizacyjne table.komorki-organizacyjne td {
+        width: 100%;
+    }
+}

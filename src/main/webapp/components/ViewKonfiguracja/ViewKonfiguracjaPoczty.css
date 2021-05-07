@@ -1,0 +1,10 @@
+.view-konfiguracja-poczty .grid {
+    display: grid;    
+    grid-template-columns: min-content auto;
+    align-items: center;
+}
+
+.view-konfiguracja-poczty input,
+.view-konfiguracja-poczty select {
+    width: 100%;
+}

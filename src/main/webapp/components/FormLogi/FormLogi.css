@@ -1,0 +1,22 @@
+.form-logi .grid {
+    display: grid;    
+    grid-template-columns: max-content auto;
+    align-items: center;
+}
+.form-logi .wartosci-kolumny {
+    margin-top: 1em;
+    display: grid;    
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.form-logi .wartosci {
+    margin-top: 1em;
+}
+.form-logi .value {
+    overflow-wrap: anywhere;
+}
+.form-logi .wartosci-lista {
+    margin-left: 0.5em;
+}
+.form-logi .label {
+    color: var(--main-low-visibility-color);
+}

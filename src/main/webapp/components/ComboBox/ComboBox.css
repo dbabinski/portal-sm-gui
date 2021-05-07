@@ -1,0 +1,20 @@
+.sm-combobox{
+    display: table;
+}
+
+.sm-combobox {
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 400;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.sm-combobox .select {
+    padding: 0.45em;
+}

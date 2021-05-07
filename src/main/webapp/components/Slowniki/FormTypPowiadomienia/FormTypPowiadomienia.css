@@ -1,0 +1,11 @@
+.form-typ-powiadomienia .grid {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+}
+.form-typ-powiadomienia input[type='text'] {
+    width: 100%;
+}
+.form-typ-powiadomienia input[type='checkbox'] {
+    width: min-content;
+}

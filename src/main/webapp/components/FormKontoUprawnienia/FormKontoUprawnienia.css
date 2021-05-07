@@ -1,0 +1,8 @@
+.form-konto-uprawnienia .grid {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+}
+.form-konto-uprawnienia input[type='checkbox'] {
+    width: min-content;
+}

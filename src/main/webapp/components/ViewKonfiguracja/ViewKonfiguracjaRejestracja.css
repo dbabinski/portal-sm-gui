@@ -1,0 +1,20 @@
+.view-konfiguracja-rejestracja .grid {
+    display: grid;    
+    grid-template-columns: min-content auto;
+    align-items: center;
+}
+.view-konfiguracja-rejestracja input,
+.view-konfiguracja-rejestracja textarea,
+.view-konfiguracja-rejestracja select {
+    width: 100%;
+}
+.view-konfiguracja-rejestracja input[type='checkbox'] {
+    margin-right: 1em;
+    width: min-content;
+}
+.view-konfiguracja-rejestracja .checkbox-container {
+    grid-column-end: span 2;
+}
+.view-konfiguracja-rejestracja .checkbox-container label {
+    display: inline-block;
+}
