@@ -25,7 +25,7 @@ Vue.component('form-pacjent', {
     methods: {
         load() {
             let loadUstawieniaPacjenta = fetch(
-                "/euslugi-zarzadzanie-server/serwis/ustawienia-pacjenta/")
+                "/sm-portal-server/serwis/ustawienia-pacjenta/")
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -38,7 +38,7 @@ Vue.component('form-pacjent', {
                        this.polaWymagane = this.ustawieniaPacjenta.polaWymagane;
                     }
                 });
-            let loadTypyDokumentow = fetch("/euslugi-zarzadzanie-server/slowniki/typy-dokumentow/")
+            let loadTypyDokumentow = fetch("/sm-portal-server/slowniki/typy-dokumentow/")
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -57,7 +57,7 @@ Vue.component('form-pacjent', {
             self.setValid(); 
             self.pacjent.samodzielnie = false;                       
             fetch(
-                "/euslugi-zarzadzanie-server/pacjenci/parse/", {
+                "/sm-portal-server/pacjenci/parse/", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

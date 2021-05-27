@@ -37,7 +37,7 @@ Vue.component("view-kody-jednorazowe", {
                 if(refresh === true) {
                     self.kody = [];
                 }
-                fetch("/euslugi-zarzadzanie-server/jednorazowe-kody-dostepu/lista", {
+                fetch("/sm-portal-server/jednorazowe-kody-dostepu/lista", {
                     method: 'POST',
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
@@ -70,7 +70,7 @@ Vue.component("view-kody-jednorazowe", {
         },
         editItem(object) {
             // pobieranie świeżych danych
-            fetch("/euslugi-zarzadzanie-server/jednorazowe-kody-dostepu/" + object.id)
+            fetch("/sm-portal-server/jednorazowe-kody-dostepu/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -96,13 +96,13 @@ Vue.component("view-kody-jednorazowe", {
         deleteItem(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/jednorazowe-kody-dostepu/" + object.id,
+                "/sm-portal-server/jednorazowe-kody-dostepu/" + object.id,
                 null,
                 this.refreshData
             );
         },
         saveItem(object) {
-            fetch("/euslugi-zarzadzanie-server/jednorazowe-kody-dostepu/", {
+            fetch("/sm-portal-server/jednorazowe-kody-dostepu/", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

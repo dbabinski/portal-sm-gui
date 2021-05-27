@@ -10,7 +10,7 @@ Vue.component("view-konto-dane-konta", {
   },
   methods: {
     load() {
-      let loadGrupy = fetch("/euslugi-zarzadzanie-server/uzytkownicy/grupy/")
+      let loadGrupy = fetch("/sm-portal-server/uzytkownicy/grupy/")
         .then((res) => app.handleErrors(res))
         .then((res) => res.json())
         .then((json) => {
@@ -22,7 +22,7 @@ Vue.component("view-konto-dane-konta", {
         });
       this.$nextTick(function () {
         app.showLoadingToast();
-        fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/dane-konta")
+        fetch("/sm-portal-server/uzytkownicy/konta/dane-konta")
           .then((res) => {
             app.hideLoadingToast();
             return app.handleErrors(res);
@@ -53,7 +53,7 @@ Vue.component("view-konto-dane-konta", {
     },
     saveNoweHaslo(object) {
       object.idKonta = this.konto.id;
-      fetch("/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla", {
+      fetch("/sm-portal-server/uzytkownicy/zmiana-hasla", {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",

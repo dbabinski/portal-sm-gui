@@ -11,7 +11,7 @@ Vue.component('view-konfiguracja-sms', {
         load() {
             this.$nextTick(function() {
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/serwis/konfiguracja-serwera-sms")
+                fetch("/sm-portal-server/serwis/konfiguracja-serwera-sms")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -32,7 +32,7 @@ Vue.component('view-konfiguracja-sms', {
             this.load();
         },
         _save() {
-            fetch("/euslugi-zarzadzanie-server/serwis/konfiguracja-serwera-sms", {
+            fetch("/sm-portal-server/serwis/konfiguracja-serwera-sms", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

@@ -36,7 +36,7 @@ Vue.component("view-logowania-do-systemu", {
                 if(refresh === true) {
                     this.logowania = [];                    
                 }
-                fetch("/euslugi-zarzadzanie-server/logowania", {
+                fetch("/sm-portal-server/logowania", {
                     method: 'POST',
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

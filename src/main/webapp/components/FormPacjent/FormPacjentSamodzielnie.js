@@ -28,7 +28,7 @@ Vue.component('form-pacjent-samodzielnie', {
         async _renderRecaptcha() {
             await utils.waitUntil(() => app.recaptchaReady == true)
                 .then(() => {
-                    fetch("/euslugi-zarzadzanie-server/serwis/konfiguracja/recaptchaSiteKey")
+                    fetch("/sm-portal-server/serwis/konfiguracja/recaptchaSiteKey")
                         .then(res => app.handleErrors(res))
                         .then(res => res.json())
                         .then(json => {
@@ -55,7 +55,7 @@ Vue.component('form-pacjent-samodzielnie', {
         },
         load() {
             this._renderRecaptcha();
-            let loadUstawieniaPacjenta = fetch("/euslugi-zarzadzanie-server/serwis/ustawienia-pacjenta")
+            let loadUstawieniaPacjenta = fetch("/sm-portal-server/serwis/ustawienia-pacjenta")
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -68,7 +68,7 @@ Vue.component('form-pacjent-samodzielnie', {
                        this.polaWymagane = this.ustawieniaPacjenta.polaWymaganeSamodzielnie;
                     }
                 });
-            let loadRegulamin = fetch("/euslugi-zarzadzanie-server/portal/regulamin")
+            let loadRegulamin = fetch("/sm-portal-server/portal/regulamin")
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -100,7 +100,7 @@ Vue.component('form-pacjent-samodzielnie', {
                 self.pacjent.samodzielnie = true;
                 self.pacjent.reCaptchaToken = grecaptcha.getResponse();
             }
-            fetch("/euslugi-zarzadzanie-server/pacjenci/parse/", {
+            fetch("/sm-portal-server/pacjenci/parse/", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

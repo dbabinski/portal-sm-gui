@@ -9,7 +9,7 @@ Vue.component('form-typ-grupy', {
             let self = this;
             self.setValid();
             fetch(
-                "/euslugi-zarzadzanie-server/slowniki/typy-grup/parse", {
+                "/sm-portal-server/slowniki/typy-grup/parse", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

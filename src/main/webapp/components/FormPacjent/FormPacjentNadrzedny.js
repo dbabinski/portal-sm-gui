@@ -12,7 +12,7 @@ Vue.component('form-pacjent-nadrzedny', {
     },
     methods: {
         load() {
-            let loadUstawieniaPacjenta = fetch("/euslugi-zarzadzanie-server/serwis/ustawienia-pacjenta")
+            let loadUstawieniaPacjenta = fetch("/sm-portal-server/serwis/ustawienia-pacjenta")
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -30,7 +30,7 @@ Vue.component('form-pacjent-nadrzedny', {
         onSubmit() {
             let self = this;
             self.setValid();
-            fetch("/euslugi-zarzadzanie-server/pacjenci/parse/", {
+            fetch("/sm-portal-server/pacjenci/parse/", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

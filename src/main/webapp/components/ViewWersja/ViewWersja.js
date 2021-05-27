@@ -8,7 +8,7 @@ Vue.component("view-wersja", {
     mounted() {
         let self = this;
         fetch(
-            "/euslugi-zarzadzanie-server/wersja", {
+            "/sm-portal-server/wersja", {
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }

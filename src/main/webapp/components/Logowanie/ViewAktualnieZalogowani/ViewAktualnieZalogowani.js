@@ -65,7 +65,7 @@ Vue.component("view-aktualnie-zalogowani", {
                 if(refresh === true) {
                     this.logowania = [];                    
                 }
-                fetch("/euslugi-zarzadzanie-server/zalogowani", {
+                fetch("/sm-portal-server/zalogowani", {
                     method: 'POST',
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

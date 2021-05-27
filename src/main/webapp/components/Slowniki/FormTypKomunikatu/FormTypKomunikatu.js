@@ -9,7 +9,7 @@ Vue.component('form-typ-komunikatu', {
             let self = this;
             self.setValid();
             fetch(
-                "/euslugi-zarzadzanie-server/slowniki/typy-komunikatow/parse", {
+                "/sm-portal-server/slowniki/typy-komunikatow/parse", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

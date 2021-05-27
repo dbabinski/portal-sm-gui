@@ -13,7 +13,7 @@ Vue.component('form-kod-jednorazowy', {
             let self = this;
             self.setValid();
             fetch(
-                "/euslugi-zarzadzanie-server/jednorazowe-kody-dostepu/parse/", {
+                "/sm-portal-server/jednorazowe-kody-dostepu/parse/", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
@@ -48,7 +48,7 @@ Vue.component('form-kod-jednorazowy', {
         onGenerate() {
             let self = this;
             fetch(
-                "/euslugi-zarzadzanie-server/jednorazowe-kody-dostepu/generuj/", {
+                "/sm-portal-server/jednorazowe-kody-dostepu/generuj/", {
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
                     }

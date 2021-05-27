@@ -11,7 +11,7 @@ Vue.component("view-typy-grup", {
         load: function () {
             this.$nextTick(function(){
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/slowniki/typy-grup")
+                fetch("/sm-portal-server/slowniki/typy-grup")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -33,7 +33,7 @@ Vue.component("view-typy-grup", {
             this.$refs.formDialog.show();
         },
         editItem: function(object) {
-            fetch("/euslugi-zarzadzanie-server/slowniki/typy-grup/" + object.id)
+            fetch("/sm-portal-server/slowniki/typy-grup/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -61,13 +61,13 @@ Vue.component("view-typy-grup", {
         deleteItem: function(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/slowniki/typy-grup/" + object.id,
+                "/sm-portal-server/slowniki/typy-grup/" + object.id,
                 null,
                 this.load
             );
         },
         saveItem: function(object) {
-            fetch("/euslugi-zarzadzanie-server/slowniki/typy-grup", {
+            fetch("/sm-portal-server/slowniki/typy-grup", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

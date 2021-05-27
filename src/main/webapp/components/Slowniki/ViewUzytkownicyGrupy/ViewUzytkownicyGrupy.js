@@ -11,7 +11,7 @@ Vue.component("view-uzytkownicy-grupy", {
         load: function() {
             this.$nextTick(function() {
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/uzytkownicy/grupy")
+                fetch("/sm-portal-server/uzytkownicy/grupy")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -35,7 +35,7 @@ Vue.component("view-uzytkownicy-grupy", {
         },
         editItem: function(object) {
             // pobieranie świeżych danych
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/grupy/" + object.id)
+            fetch("/sm-portal-server/uzytkownicy/grupy/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -64,13 +64,13 @@ Vue.component("view-uzytkownicy-grupy", {
         deleteItem: function(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/uzytkownicy/grupy/" + object.id,
+                "/sm-portal-server/uzytkownicy/grupy/" + object.id,
                 null,
                 this.load
             );
         },
         saveItem: function(object) {
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/grupy", {
+            fetch("/sm-portal-server/uzytkownicy/grupy", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

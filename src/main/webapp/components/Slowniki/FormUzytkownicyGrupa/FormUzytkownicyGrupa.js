@@ -8,7 +8,7 @@ Vue.component('form-uzytkownicy-grupa', {
     methods: {
         load: function() {
             let loadTypyGrup = fetch(
-                "/euslugi-zarzadzanie-server/slowniki/typy-grup/")
+                "/sm-portal-server/slowniki/typy-grup/")
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -25,7 +25,7 @@ Vue.component('form-uzytkownicy-grupa', {
             let self = this;
             self.setValid();
             fetch(
-                "/euslugi-zarzadzanie-server/uzytkownicy/grupy/parse", {
+                "/sm-portal-server/uzytkownicy/grupy/parse", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

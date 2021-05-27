@@ -15,7 +15,7 @@ Vue.component("view-aktywacja-konta", {
         self.$nextTick(() => {
             if(!utils.isNull(self.uuid)) {
                 fetch(
-                    "/euslugi-zarzadzanie-server/uzytkownicy/konta/aktywacja/" + self.uuid, {
+                    "/sm-portal-server/uzytkownicy/konta/aktywacja/" + self.uuid, {
                         headers: {
                             "Content-type": "application/json; charset=UTF-8"
                         }

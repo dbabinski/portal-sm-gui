@@ -209,7 +209,7 @@ var app = new Vue({
         },
         logout(message) {
             const self = this;
-            fetch("/euslugi-zarzadzanie-server/autentykacja/logout")
+            fetch("/sm-portal-server/autentykacja/logout")
                 .then(res => {
                     store.dispatch("logout");
                     router.push("/");

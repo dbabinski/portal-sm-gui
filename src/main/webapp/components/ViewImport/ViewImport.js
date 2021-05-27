@@ -43,7 +43,7 @@ Vue.component("view-import", {
             if(this.tabela_przyklad != null){
                 var jsonObj = {"tabela": this.tabela_przyklad};
                 fetch(
-                    "/euslugi-zarzadzanie-server/import/przyklad", {
+                    "/sm-portal-server/import/przyklad", {
                         method: "POST",
                         headers: {
                             "Content-type": "application/json; charset=UTF-8"
@@ -73,7 +73,7 @@ Vue.component("view-import", {
         },
         send_import: function(object){
             fetch(
-                "/euslugi-zarzadzanie-server/import/", {
+                "/sm-portal-server/import/", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

@@ -9,7 +9,7 @@ Vue.component('form-typ-edokumentu', {
             let self = this;
             self.setValid(); 
             fetch(
-                "/euslugi-zarzadzanie-server/slowniki/typy-edokumentow/parse", {
+                "/sm-portal-server/slowniki/typy-edokumentow/parse", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

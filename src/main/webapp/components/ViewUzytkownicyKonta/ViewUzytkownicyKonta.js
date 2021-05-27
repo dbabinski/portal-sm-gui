@@ -16,7 +16,7 @@ Vue.component("view-uzytkownicy-konta", {
         this.loadData();
         this.$refs.filter.focus();
         // let self = this;
-        // fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/niepowiazane", {
+        // fetch("/sm-portal-server/uzytkownicy/konta/niepowiazane", {
         //     method: 'GET',
         //     headers: {
         //         "Content-type": "application/json; charset=UTF-8"
@@ -62,7 +62,7 @@ Vue.component("view-uzytkownicy-konta", {
                 if(refresh === true) {
                     this.konta = [];
                 }
-                fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/lista", {
+                fetch("/sm-portal-server/uzytkownicy/konta/lista", {
                     method: 'POST',
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
@@ -99,7 +99,7 @@ Vue.component("view-uzytkownicy-konta", {
         },
         editItem(object) {
             // pobieranie świeżych danych
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/" + object.id)
+            fetch("/sm-portal-server/uzytkownicy/konta/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -128,13 +128,13 @@ Vue.component("view-uzytkownicy-konta", {
         deleteItem(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/uzytkownicy/konta/" + object.id,
+                "/sm-portal-server/uzytkownicy/konta/" + object.id,
                 null,
                 this.refreshData
             );
         },
         saveItem(object) {
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/", {
+            fetch("/sm-portal-server/uzytkownicy/konta/", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

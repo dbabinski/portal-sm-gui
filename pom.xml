@@ -98,6 +98,9 @@
                                 <copy todir="../SoftMedica-DIST/SM-Portal" flatten="true" overwrite="true" verbose="true" failonerror="true">
                                     <fileset dir="target"  includes="*.war"/>
                                 </copy>
+                                <copy todir="\\wsl$\Ubuntu-20.04\home\dbabinski\docker-deployments\sm-portal-docker\volumes\wildfly\deployments" flatten="true" overwrite="true" verbose="true" failonerror="true">
+                                    <fileset dir="target"  includes="*.war"/>
+                                </copy>
                             </tasks>
                         </configuration>
                         <goals>

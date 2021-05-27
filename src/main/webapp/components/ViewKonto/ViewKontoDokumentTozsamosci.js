@@ -10,7 +10,7 @@ Vue.component("view-konto-dokument-tozsamosci", {
   },
   methods: {
     load() {
-      fetch("/euslugi-zarzadzanie-server/slowniki/typy-dokumentow/")
+      fetch("/sm-portal-server/slowniki/typy-dokumentow/")
         .then((res) => app.handleErrors(res))
         .then((res) => res.json())
         .then((json) => {

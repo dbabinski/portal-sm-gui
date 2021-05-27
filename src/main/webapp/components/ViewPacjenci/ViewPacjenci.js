@@ -36,7 +36,7 @@ Vue.component("view-pacjenci", {
                 if(refresh === true) {
                     this.pacjenci = [];
                 }
-                fetch("/euslugi-zarzadzanie-server/pacjenci/lista", {
+                fetch("/sm-portal-server/pacjenci/lista", {
                     method: 'POST',
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
@@ -69,7 +69,7 @@ Vue.component("view-pacjenci", {
         },
         editItem(object) {
             // pobieranie świeżych danych
-            fetch("/euslugi-zarzadzanie-server/pacjenci/" + object.id)
+            fetch("/sm-portal-server/pacjenci/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -96,13 +96,13 @@ Vue.component("view-pacjenci", {
         deleteItem(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/pacjenci/" + object.id,
+                "/sm-portal-server/pacjenci/" + object.id,
                 null,
                 this.refreshData
             );
         },
         saveItem(object) {
-            fetch("/euslugi-zarzadzanie-server/pacjenci/", {
+            fetch("/sm-portal-server/pacjenci/", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
@@ -148,7 +148,7 @@ Vue.component("view-pacjenci", {
         //     this.$refs.formDialogSamodzielnie.show();
         // },
         // saveItemSelf(object) {
-        //     fetch("/euslugi-zarzadzanie-server/pacjenci/", {
+        //     fetch("/sm-portal-server/pacjenci/", {
         //         method: "POST",
         //         headers: {
         //             "Content-type": "application/json; charset=UTF-8"

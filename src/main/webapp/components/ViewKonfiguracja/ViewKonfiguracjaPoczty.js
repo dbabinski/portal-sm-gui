@@ -13,7 +13,7 @@ Vue.component('view-konfiguracja-poczty', {
         load() {
             this.$nextTick(function() {
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/serwis/konfiguracja-serwera-poczty")
+                fetch("/sm-portal-server/serwis/konfiguracja-serwera-poczty")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -44,7 +44,7 @@ Vue.component('view-konfiguracja-poczty', {
             } else {
                 this.konfiguracjaPoczty.ssl = false;
             }
-            fetch("/euslugi-zarzadzanie-server/serwis/konfiguracja-serwera-poczty", {
+            fetch("/sm-portal-server/serwis/konfiguracja-serwera-poczty", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

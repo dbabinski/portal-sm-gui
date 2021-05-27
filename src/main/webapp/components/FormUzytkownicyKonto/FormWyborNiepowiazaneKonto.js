@@ -41,7 +41,7 @@ Vue.component('form-wybor-niepowiazane-konto', {
                 refresh: false
             };
             let self = this;
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/niepowiazane", {
+            fetch("/sm-portal-server/uzytkownicy/konta/niepowiazane", {
                 method: 'POST',
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

@@ -9,7 +9,7 @@ Vue.component("form-typ-powiadomienia", {
             let self = this;
             self.setValid();                    
             fetch(
-                "/euslugi-zarzadzanie-server/slowniki/typy-powiadomien/parse", {
+                "/sm-portal-server/slowniki/typy-powiadomien/parse", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8",

@@ -12,7 +12,7 @@ Vue.component('form-konto-uprawnienia', {
     },
     methods: {
         load(object) {
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/uprawnienia/konto/" + object.id, {
+            fetch("/sm-portal-server/uzytkownicy/uprawnienia/konto/" + object.id, {
                 headers: {
                   "Content-type": "application/json; charset=UTF-8",
                 },

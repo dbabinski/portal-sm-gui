@@ -11,7 +11,7 @@ Vue.component("view-typy-komunikatow", {
         load() {
             this.$nextTick(function(){
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/slowniki/typy-komunikatow")
+                fetch("/sm-portal-server/slowniki/typy-komunikatow")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -33,7 +33,7 @@ Vue.component("view-typy-komunikatow", {
             this.$refs.formDialog.show();
         },
         editItem(object) {
-            fetch("/euslugi-zarzadzanie-server/slowniki/typy-komunikatow/" + object.id)
+            fetch("/sm-portal-server/slowniki/typy-komunikatow/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -61,13 +61,13 @@ Vue.component("view-typy-komunikatow", {
         deleteItem(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/slowniki/typy-komunikatow/" + object.id,
+                "/sm-portal-server/slowniki/typy-komunikatow/" + object.id,
                 null,
                 this.load
             );
         },
         saveItem(object) {
-            fetch("/euslugi-zarzadzanie-server/slowniki/typy-komunikatow", {
+            fetch("/sm-portal-server/slowniki/typy-komunikatow", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

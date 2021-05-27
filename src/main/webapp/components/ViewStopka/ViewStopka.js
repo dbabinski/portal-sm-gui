@@ -8,7 +8,7 @@ Vue.component("view-stopka", {
     mounted() {
         let self = this;
         fetch(
-            "/euslugi-zarzadzanie-server/portal/stopka", {
+            "/sm-portal-server/portal/stopka", {
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }

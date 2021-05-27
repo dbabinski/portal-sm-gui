@@ -28,7 +28,7 @@ Vue.component('form-aktualnosci', {
             }
 
             fetch(
-                "/euslugi-zarzadzanie-server/portal/aktualnosci/parse/", {
+                "/smportal-server/portal/aktualnosci/parse/", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

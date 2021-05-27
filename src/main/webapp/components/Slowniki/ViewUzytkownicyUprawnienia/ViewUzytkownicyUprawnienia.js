@@ -11,7 +11,7 @@ Vue.component("view-uzytkownicy-uprawnienia", {
         load: function() {
             this.$nextTick(function() {
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/uzytkownicy/uprawnienia")
+                fetch("/sm-portal-server/uzytkownicy/uprawnienia")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -30,7 +30,7 @@ Vue.component("view-uzytkownicy-uprawnienia", {
         },
         editItem: function(rekordUprawnien) {
             // pobieranie świeżych danych
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/uprawnienia/" + rekordUprawnien.id)
+            fetch("/sm-portal-server/uzytkownicy/uprawnienia/" + rekordUprawnien.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -48,7 +48,7 @@ Vue.component("view-uzytkownicy-uprawnienia", {
                 });
         },
         saveItem: function(rekordUprawnien) {
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/uprawnienia", {
+            fetch("/sm-portal-server/uzytkownicy/uprawnienia", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

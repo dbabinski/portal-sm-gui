@@ -16,7 +16,7 @@ Vue.component("view-konto", {
     load() {
       this.$nextTick(function () {
         app.showLoadingToast();
-        fetch("/euslugi-zarzadzanie-server/pacjenci/dane-pacjenta")
+        fetch("/sm-portal-server/pacjenci/dane-pacjenta")
           .then((res) => {
             app.hideLoadingToast();
             return app.handleErrors(res);

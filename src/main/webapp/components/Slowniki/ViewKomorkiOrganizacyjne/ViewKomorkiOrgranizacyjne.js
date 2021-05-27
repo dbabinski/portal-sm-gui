@@ -11,7 +11,7 @@ Vue.component("view-komorki-organizacyjne", {
         load: function() {
             this.$nextTick(function() {
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/slowniki/komorki-organizacyjne")
+                fetch("/sm-portal-server/slowniki/komorki-organizacyjne")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -35,7 +35,7 @@ Vue.component("view-komorki-organizacyjne", {
         },
         editItem: function(object) {
             // pobieranie świeżych danych
-            fetch("/euslugi-zarzadzanie-server/slowniki/komorki-organizacyjne/" + object.id)
+            fetch("/sm-portal-server/slowniki/komorki-organizacyjne/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -64,13 +64,13 @@ Vue.component("view-komorki-organizacyjne", {
         deleteItem: function(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/slowniki/komorki-organizacyjne/" + object.id,
+                "/sm-portal-server/slowniki/komorki-organizacyjne/" + object.id,
                 null,
                 this.load
             );
         },
         saveItem: function(object) {
-            fetch("/euslugi-zarzadzanie-server/slowniki/komorki-organizacyjne", {
+            fetch("/sm-portal-server/slowniki/komorki-organizacyjne", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

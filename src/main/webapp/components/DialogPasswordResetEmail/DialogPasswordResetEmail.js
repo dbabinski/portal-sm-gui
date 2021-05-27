@@ -36,7 +36,7 @@ Vue.component('dialog-password-reset-email', {
             let self = this;
             self.setValid();
             fetch(
-                "/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla/parse-mail", {
+                "/sm-portal-server/uzytkownicy/zmiana-hasla/parse-mail", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
@@ -69,7 +69,7 @@ Vue.component('dialog-password-reset-email', {
             app.showLoadingToast("Wysyłanie e-mail");
             this.clear();
             this.$refs.dialog.hide();
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla/nie-pamietam", {
+            fetch("/sm-portal-server/uzytkownicy/zmiana-hasla/nie-pamietam", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

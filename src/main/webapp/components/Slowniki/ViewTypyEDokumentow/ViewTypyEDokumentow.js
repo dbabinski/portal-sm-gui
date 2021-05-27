@@ -11,7 +11,7 @@ Vue.component("view-typy-edokumentow", {
         load: function () {
             this.$nextTick(function(){
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/slowniki/typy-edokumentow")
+                fetch("/sm-portal-server/slowniki/typy-edokumentow")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -33,7 +33,7 @@ Vue.component("view-typy-edokumentow", {
             this.$refs.formDialog.show();
         },
         editItem: function(object) {
-            fetch("/euslugi-zarzadzanie-server/slowniki/typy-edokumentow/" + object.id)
+            fetch("/sm-portal-server/slowniki/typy-edokumentow/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -61,13 +61,13 @@ Vue.component("view-typy-edokumentow", {
         deleteItem: function(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/slowniki/typy-edokumentow/" + object.id,
+                "/sm-portal-server/slowniki/typy-edokumentow/" + object.id,
                 null,
                 this.load
             );
         },
         saveItem: function(object) {
-            fetch("/euslugi-zarzadzanie-server/slowniki/typy-edokumentow", {
+            fetch("/sm-portal-server/slowniki/typy-edokumentow", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

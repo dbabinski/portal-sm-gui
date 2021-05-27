@@ -7,7 +7,7 @@ Vue.component("view-naglowek", {
     mounted() {
         let self = this;
         fetch(
-            "/euslugi-zarzadzanie-server/portal/naglowek", {
+            "/sm-portal-server/portal/naglowek", {
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }

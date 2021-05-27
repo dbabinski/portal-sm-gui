@@ -4,7 +4,7 @@ Vue.component("view-konto-dane-podstawowe", {
     _refresh() {
       this.$nextTick(function () {
         app.showLoadingToast();
-        fetch("/euslugi-zarzadzanie-server/pacjenci/dane-pacjenta")
+        fetch("/sm-portal-server/pacjenci/dane-pacjenta")
           .then((res) => {
             app.hideLoadingToast();
             return app.handleErrors(res);
@@ -18,7 +18,7 @@ Vue.component("view-konto-dane-podstawowe", {
       });
     },
     _save() {
-      fetch("/euslugi-zarzadzanie-server/pacjenci/", {
+      fetch("/sm-portal-server/pacjenci/", {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",

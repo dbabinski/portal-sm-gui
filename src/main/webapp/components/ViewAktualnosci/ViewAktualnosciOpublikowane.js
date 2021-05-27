@@ -9,7 +9,7 @@ Vue.component("view-aktualnosci-opublikowane", {
     },
     methods: {
         load: function() {
-            fetch("/euslugi-zarzadzanie-server/portal/aktualnosci/opublikowane")
+            fetch("/sm-portal-server/portal/aktualnosci/opublikowane")
                 .then(res => {
                     return app.handleErrors(res);
                 })

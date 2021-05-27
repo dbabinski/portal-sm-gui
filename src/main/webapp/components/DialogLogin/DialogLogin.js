@@ -17,7 +17,7 @@ Vue.component("dialog-login", {
     mounted() {
         let self = this;
         fetch(
-            "/euslugi-zarzadzanie-server/serwis/konfiguracja/logo/", {
+            "/sm-portal-server/serwis/konfiguracja/logo/", {
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
@@ -44,7 +44,7 @@ Vue.component("dialog-login", {
         },
         login() {
             let self = this;
-            fetch("/euslugi-zarzadzanie-server/autentykacja/login", {
+            fetch("/sm-portal-server/autentykacja/login", {
                 method: "POST",
                 headers: { "Content-type": "application/json; charset=UTF-8" },
                 body: JSON.stringify(this.daneLogowania)
@@ -90,7 +90,7 @@ Vue.component("dialog-login", {
         },
         saveItemSelf(object) {
             let self = this;
-            fetch("/euslugi-zarzadzanie-server/pacjenci/", {
+            fetch("/sm-portal-server/pacjenci/", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

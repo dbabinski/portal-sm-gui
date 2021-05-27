@@ -9,7 +9,7 @@ Vue.component("form-uzytkownicy-konto", {
   },
   methods: {
     load() {
-      let loadGrupy = fetch("/euslugi-zarzadzanie-server/uzytkownicy/grupy/")
+      let loadGrupy = fetch("/sm-portal-server/uzytkownicy/grupy/")
         .then((res) => app.handleErrors(res))
         .then((res) => res.json())
         .then((json) => {
@@ -23,7 +23,7 @@ Vue.component("form-uzytkownicy-konto", {
     onSubmit() {
       let self = this;
       self.setValid();
-      fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/parse", {
+      fetch("/sm-portal-server/uzytkownicy/konta/parse", {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -105,7 +105,7 @@ Vue.component("form-uzytkownicy-konto", {
       };
       app.send(
         "DELETE",
-        "/euslugi-zarzadzanie-server/pacjenci/usun-powiazanie-pacjenta",
+        "/sm-portal-server/pacjenci/usun-powiazanie-pacjenta",
         params,
         this.loadPacjenciPodrzedni
       );
@@ -127,7 +127,7 @@ Vue.component("form-uzytkownicy-konto", {
     },
     saveNoweHaslo(object) {
       object.idKonta = this.konto.id;
-      fetch("/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla", {
+      fetch("/sm-portal-server/uzytkownicy/zmiana-hasla", {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -149,7 +149,7 @@ Vue.component("form-uzytkownicy-konto", {
       const self = this;
       if (self.konto.id != null) {
         let kontoId = { konto: self.konto.id };
-        fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/nadrzedni", {
+        fetch("/sm-portal-server/uzytkownicy/konta/nadrzedni", {
           method: "POST",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -171,7 +171,7 @@ Vue.component("form-uzytkownicy-konto", {
       const self = this;
       if (self.konto.id != null) {
         let kontoId = { konto: self.konto.id };
-        fetch("/euslugi-zarzadzanie-server/uzytkownicy/konta/podrzedni", {
+        fetch("/sm-portal-server/uzytkownicy/konta/podrzedni", {
           method: "POST",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -200,7 +200,7 @@ Vue.component("form-uzytkownicy-konto", {
         pacjent: object,
         nadrzedny: false,
       };
-      fetch("/euslugi-zarzadzanie-server/pacjenci/do-konta", {
+      fetch("/sm-portal-server/pacjenci/do-konta", {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -232,7 +232,7 @@ Vue.component("form-uzytkownicy-konto", {
       this.$refs.dialogUprawnienia.hide();
     },
     saveItemUprawnienia(object) {
-      fetch("/euslugi-zarzadzanie-server/uzytkownicy/uprawnienia/konto", {
+      fetch("/sm-portal-server/uzytkownicy/uprawnienia/konto", {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -261,7 +261,7 @@ Vue.component("form-uzytkownicy-konto", {
         pacjent: object,
         nadrzedny: true,
       };
-      fetch("/euslugi-zarzadzanie-server/pacjenci/do-konta", {
+      fetch("/sm-portal-server/pacjenci/do-konta", {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -286,7 +286,7 @@ Vue.component("form-uzytkownicy-konto", {
     },
     editPacjentPodrzedny(object) {
       // pobieranie świeżych danych
-      fetch("/euslugi-zarzadzanie-server/pacjenci/" + object.id)
+      fetch("/sm-portal-server/pacjenci/" + object.id)
         .then((res) => app.handleErrors(res))
         .then((res) => res.json())
         .then((json) => {
@@ -305,7 +305,7 @@ Vue.component("form-uzytkownicy-konto", {
         });
     },
     editPacjentNadrzedny(object) {
-      fetch("/euslugi-zarzadzanie-server/pacjenci/" + object.id)
+      fetch("/sm-portal-server/pacjenci/" + object.id)
         .then((res) => app.handleErrors(res))
         .then((res) => res.json())
         .then((json) => {

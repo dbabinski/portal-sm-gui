@@ -11,7 +11,7 @@ Vue.component("view-typy-dokumentow", {
         load() {
             this.$nextTick(function() {
                 app.showLoadingToast();
-                fetch("/euslugi-zarzadzanie-server/slowniki/typy-dokumentow")
+                fetch("/sm-portal-server/slowniki/typy-dokumentow")
                     .then(res => {
                         app.hideLoadingToast();
                         return app.handleErrors(res);
@@ -34,7 +34,7 @@ Vue.component("view-typy-dokumentow", {
         },
         editItem(object) {
            //pobieranie świeżych danych
-           fetch("/euslugi-zarzadzanie-server/slowniki/typy-dokumentow/" + object.id)
+           fetch("/sm-portal-server/slowniki/typy-dokumentow/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -62,13 +62,13 @@ Vue.component("view-typy-dokumentow", {
         deleteItem(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/slowniki/typy-dokumentow/" + object.id,
+                "/sm-portal-server/slowniki/typy-dokumentow/" + object.id,
                 null,
                 this.load
             );
         },
         saveItem(object) {
-            fetch("/euslugi-zarzadzanie-server/slowniki/typy-dokumentow", {
+            fetch("/sm-portal-server/slowniki/typy-dokumentow", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"

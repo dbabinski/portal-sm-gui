@@ -9,7 +9,7 @@ Vue.component("view-aktualnosci-lista", {
     },
     methods: {
         load() {
-            fetch("/euslugi-zarzadzanie-server/portal/aktualnosci/wszystkie")
+            fetch("/sm-portal-server/portal/aktualnosci/wszystkie")
                 .then(res => {
                     return app.handleErrors(res);
                 })
@@ -27,7 +27,7 @@ Vue.component("view-aktualnosci-lista", {
             this.$refs.formDialog.show();
         },
         editItem(object) {
-            fetch("/euslugi-zarzadzanie-server/portal/aktualnosci/" + object.id)
+            fetch("/sm-portal-server/portal/aktualnosci/" + object.id)
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -53,7 +53,7 @@ Vue.component("view-aktualnosci-lista", {
         },
         saveItem(object) {
             let self = this;
-            fetch("/euslugi-zarzadzanie-server/portal/aktualnosci", {
+            fetch("/sm-portal-server/portal/aktualnosci", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
@@ -85,7 +85,7 @@ Vue.component("view-aktualnosci-lista", {
         deleteItem(object) {
             app.send(
                 "DELETE",
-                "/euslugi-zarzadzanie-server/portal/aktualnosci/" + object.id,
+                "/sm-portal-server/portal/aktualnosci/" + object.id,
                 null,
                 this.load
             );

@@ -16,7 +16,7 @@ Vue.component('form-komorka-organizacyjna', {
     },
     methods: {
         load: function() {
-            let loadKomorkiOrganizacyjne = fetch("/euslugi-zarzadzanie-server/slowniki/komorki-organizacyjne/")
+            let loadKomorkiOrganizacyjne = fetch("/sm-portal-server/slowniki/komorki-organizacyjne/")
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -33,7 +33,7 @@ Vue.component('form-komorka-organizacyjna', {
             let self = this;
             self.setValid();
             fetch(
-                "/euslugi-zarzadzanie-server/slowniki/komorki-organizacyjne/parse", {
+                "/sm-portal-server/slowniki/komorki-organizacyjne/parse", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

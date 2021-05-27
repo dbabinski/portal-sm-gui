@@ -36,7 +36,7 @@ Vue.component("view-logi", {
                 if(refresh === true) {
                     this.logi = [];                    
                 }
-                fetch("/euslugi-zarzadzanie-server/logi", {
+                fetch("/sm-portal-server/logi", {
                     method: 'POST',
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

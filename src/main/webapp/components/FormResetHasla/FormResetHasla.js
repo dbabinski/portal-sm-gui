@@ -26,7 +26,7 @@ Vue.component('form-reset-hasla', {
         },
         generujNoweHaslo() {
             let getNoweHaslo = fetch(
-                "/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla/generator-hasla")
+                "/sm-portal-server/uzytkownicy/zmiana-hasla/generator-hasla")
                 .then(res => app.handleErrors(res))
                 .then(res => res.json())
                 .then(json => {
@@ -43,7 +43,7 @@ Vue.component('form-reset-hasla', {
             let self = this;
             self.setValid();
             fetch(
-                "/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla/parse/", {
+                "/sm-portal-server/uzytkownicy/zmiana-hasla/parse/", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"

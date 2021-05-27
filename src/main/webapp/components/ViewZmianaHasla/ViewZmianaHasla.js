@@ -18,7 +18,7 @@ Vue.component("view-zmiana-hasla", {
             function() {
                 if(!utils.isNull(self.token)) {
                     fetch(
-                        "/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla/" + self.token, {
+                        "/sm-portal-server/uzytkownicy/zmiana-hasla/" + self.token, {
                             headers: {
                                 "Content-type": "application/json; charset=UTF-8"
                             }
@@ -50,7 +50,7 @@ Vue.component("view-zmiana-hasla", {
         },
         saveItem(object) {
             let self = this;
-            fetch("/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla/", {
+            fetch("/sm-portal-server/uzytkownicy/zmiana-hasla/", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
@@ -74,7 +74,7 @@ Vue.component("view-zmiana-hasla", {
             let self = this;
             self.setValid();                    
             fetch(
-                "/euslugi-zarzadzanie-server/uzytkownicy/zmiana-hasla/parse/", {
+                "/sm-portal-server/uzytkownicy/zmiana-hasla/parse/", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
