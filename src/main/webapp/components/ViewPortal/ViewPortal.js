@@ -18,13 +18,20 @@ Vue.component("view-portal", {
             } else {
                 app.login();
             }
+        },
+        showMenuDrawer() {
+            this.$root.$refs.menuDrawer.show();
         }
     },
     template: `    
     <div class='view-portal'>
         <div class='portal-header-container'>
             <div class='portal-header'>
-                <menu-main></menu-main>
+                <div class="button-container">
+                    <sm-button class='button' label="Menu" @on-click='showMenuDrawer'></sm-button>
+                </div>
+                <!--<menu-main></menu-main>-->
+                <view-naglowek></view-naglowek>
                 <div class='button-container'>
                     <sm-button class='button' :label='label' @on-click='showMenuUser'></sm-button>
                     <menu-user ref='menuUser'></menu-user>

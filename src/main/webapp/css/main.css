@@ -1,5 +1,5 @@
 :root {
-    --main-background-color: #eeeeee;
+    --main-background-color: #FFFFFF;
     --main-button-background: #36465d;
     --main-button-background-hover: #3e7aa8;
     --main-button-background-red: #ad1457;
@@ -13,12 +13,12 @@
     --main-button-color-hover: #ffffff;
     --main-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
     --main-button-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-    --main-dialog-box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
-    --main-dialog-background: white;
+    --main-dialog-box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
+    --main-dialog-background: #FFFFFF;
     --main-dialog-border-color: #ccc;
     --main-dialog-border: 1px solid var(--main-dialog-border-color);
-    --main-dialog-border-radius: 0.3em;
-    --main-dialog-padding: 1.2em;
+    /* --main-dialog-border-radius: 0.7em; */
+    --main-dialog-padding: 3em;
     --main-dialog-margin: 1.2em;
     --main-accent-color: #36465d;
     --main-focus-color: #009acd;
@@ -50,7 +50,7 @@ body {
     color: black;
     /* user-select: none; */
     /* -webkit-user-select: none; */
-    margin: 0;
+    margin: auto;
 }
 
 body.modal-open {
@@ -68,8 +68,12 @@ hr {
 
 .app {
     margin: auto;
-    width: calc(100% - 1rem);
-    max-width: var(--main-width);
+    width: 100%;
+    /* width: calc(100% - 1rem); */
+    /* max-width: var(--main-width); */
+}
+.margin-reset {
+    margin: 0;
 }
 
 .margin-top {
@@ -110,6 +114,10 @@ hr {
 
 .margin-left-3x {
     margin-left: 1.5em;
+}
+
+.padding-reset {
+    padding: 0;
 }
 
 .padding-bottom {

@@ -1,4 +1,23 @@
 .view-aktualnosci-opublikowane {    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.view-aktualnosci-opublikowane .article {
+    margin: 20px;
+    padding: 20px;
+    width: 500px;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: 40px 50px 1fr 50px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+}
+
+.view-aktualnosci-opublikowane .article:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
 }
 
 .view-aktualnosci-opublikowane .title {

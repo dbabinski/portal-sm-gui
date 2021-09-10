@@ -1,5 +1,5 @@
 :root {
-    --menu-main-background-color: #999;
+    --menu-main-background-color: var(--main-background-color);
     --menu-main-inactive-tab-background-color: var(--main-accent-color);
     --menu-main-active-tab-background-color: white;
     --menu-main-active-tab-color: black;
@@ -16,7 +16,7 @@
     padding: 0;
     padding-left: 0.75em;
     overflow: hidden;
-    background-color: var(--menu-main-background-color);
+    background-color: var(--main-background-color);
 }
 .menu-main li {    
     vertical-align: middle;
@@ -26,13 +26,13 @@
     color: var(--main-button-color);
     display: block;
     text-align: center;
-    padding: 0.25em 1em;
+    padding: 1em;
     text-decoration: none;
     margin-left: 0.25em;
-    margin-top: 0.5em;
-    border: solid 0.25em transparent;
+    /* margin-top: 0.5em; */
+    /* border: solid 0.25em transparent;
     border-top-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
+    border-top-right-radius: 0.25em; */
     white-space: nowrap;
 }
 .menu-main li a:focus {

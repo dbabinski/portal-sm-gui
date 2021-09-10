@@ -19,9 +19,9 @@ Vue.component("menu-main", {
         <div class='menu-main'>
             <ul>
                 <li><router-link tag="a" to="/aktualnosci">Aktualności</router-link></li>
-                <li v-show='logged'><router-link tag="a" to="/pacjenci">Pacjenci</router-link></li>
+                <li v-show='logged'><router-link tag="a" to="/pacjenci">Kontrahenci</router-link></li>
                 <li v-show='logged'><router-link tag="a" to="/uzytkownicy-konta">Konta</router-link></li>
-                <li v-show='logged'><router-link tag="a" to="/kody-jednorazowe">Kody</router-link></li>
+                <!--<li v-show='logged'><router-link tag="a" to="/kody-jednorazowe">Kody</router-link></li>-->
                 <li v-show='logged'><router-link tag="a" to="/slowniki">Słowniki</router-link></li>
                 <li v-show='logged'><router-link tag="a" to="/konfiguracja">Konfiguracja</router-link></li>   
                 <li v-show='logged'><router-link tag="a" to="/logowanie">Logowanie</router-link></li>   

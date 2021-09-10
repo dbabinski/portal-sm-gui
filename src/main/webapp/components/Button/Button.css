@@ -5,12 +5,13 @@
     color: var(--main-button-color);
     font-size: 1em;
     font-weight: 400;
-    padding-left: 1em;
+    padding: 1em;
+    /* padding-left: 1em;
     padding-right: 1em;
     padding-top: 0.25em;
-    padding-bottom: 0.25em;
+    padding-bottom: 0.25em; */
     border: 1px solid var(--main-button-background);
-    border-radius: 0.25em;
+    /* border-radius: 0.25em; */
     cursor: pointer;
     box-shadow: var(--main-button-box-shadow);
     text-align: center;
