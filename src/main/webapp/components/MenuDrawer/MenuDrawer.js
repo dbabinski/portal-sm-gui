@@ -1,8 +1,7 @@
 Vue.component("menu-drawer", {
     data: function() {
         return {
-            translateX: "translateX(-360px)",
-            visibility: "hidden"
+            translateX: "translateX(0px)",
         }
     },
     
@@ -29,7 +28,7 @@ Vue.component("menu-drawer", {
         hideMenuDrawer(){
             this.translateX = "translateX(-360px)";
         },
-        show: function(){
+        showMenuDrawer(){
             this.translateX = "translateX(0px)";
         }
     },

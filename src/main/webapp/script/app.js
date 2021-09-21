@@ -1,3 +1,4 @@
+const ViewPortalMain = { template: "<view-portal-main></view-portal-main>"}
 const ViewPortal = { template: "<view-portal></view-portal>" };
 const ViewAktualnosci = { template: "<view-aktualnosci></view-aktualnosci>" };
 const ViewPacjenci = { template: "<view-pacjenci></view-pacjenci>" };
@@ -120,6 +121,7 @@ const store = new Vuex.Store({
 var app = new Vue({
     router,
     el: "#app",
+    vuetify: new Vuetify(),
     data: {
         logged: false,
         recaptchaReady: false,

@@ -3,6 +3,7 @@ Vue.component("view-portal", {
         return {
         }
     },
+
     mounted() {
     },
     computed: {
@@ -20,17 +21,20 @@ Vue.component("view-portal", {
             }
         },
         showMenuDrawer() {
-            this.$root.$refs.menuDrawer.show();
+            this.$root.$refs.menuDrawer.showMenuDrawer();
+        },
+        hideMenuDrawer() {
+            this.$root.$refs.menuDrawer.hideMenuDrawer();
         }
     },
     template: `    
     <div class='view-portal'>
         <div class='portal-header-container'>
             <div class='portal-header'>
-                <div class="button-container">
-                    <sm-button class='button' label="Menu" @on-click='showMenuDrawer'></sm-button>
-                </div>
-                <!--<menu-main></menu-main>-->
+                <!--<div class="button-container">
+                     <sm-button class='button' label="Menu" @on-click='showMenuDrawer'></sm-button>
+                </div>-->
+                <menu-main></menu-main>
                 <view-naglowek></view-naglowek>
                 <div class='button-container'>
                     <sm-button class='button' :label='label' @on-click='showMenuUser'></sm-button>

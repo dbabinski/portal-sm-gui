@@ -8,12 +8,16 @@
         <script src="./script/vue.js"></script>
         <script src="./script/vue-router.js"></script>
         <script src="./script/vuex.js"></script>
+        <script src="./script/vuetify.js"></script>
         <script src="./script/utils.js"></script>
         <script src="./script/cookies.js"></script>
         <script src="./script/vue-grid-layout.umd.min.js"></script>
-
+    
         <link rel="shortcut icon" type="image/png" href="favicon.png"/>
 
+        
+        <link rel="stylesheet" type="text/css" href="./css/vuetify.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/materialdesignicons.min.css">
         <link rel="stylesheet" type="text/css" href="./css/roboto.css">
         <link rel="stylesheet" type="text/css" href="./css/roboto-slab.css">
         <link rel="stylesheet" type="text/css" href="./css/roboto-mono.css">
@@ -105,7 +109,10 @@
         <link rel="stylesheet" type="text/css" href="./components/FormLogowania/FormLogowania.css">
 
         <link rel="stylesheet" type="text/css" href="./components/MenuUser/MenuUser.css">
+        <link rel="stylesheet" type="text/css" href="./components/ViewPortal/ViewPortalMain.css">
         <link rel="stylesheet" type="text/css" href="./components/ViewPortal/ViewPortal.css">
+
+
 
         <script>
             var onloadRecaptchaCallback = function() {
@@ -119,11 +126,8 @@
         <div class='app-container'>
             <div class="app" id="app">
                 <menu-drawer></menu-drawer>
-                <view-naglowek></view-naglowek>
-                <view-portal></view-portal>
-                <view-wersja></view-wersja>
-                <view-stopka></view-stopka>
-
+                <view-portal-main></view-portal-main>
+                
                 <sm-modal-dialog ref='messageDialog' :show-cancel="false"></sm-modal-dialog>
                 <sm-toast ref="toast"></sm-toast>
                 <sm-loading-toast ref='loadingToast'></sm-loading-toast>
@@ -215,7 +219,9 @@
         <script src="./components/FormLogowania/FormLogowania.js"></script>
 
         <script src="./components/MenuUser/MenuUser.js"></script>
+        <script src="./components/ViewPortal/ViewPortalMain.js"></script>
         <script src="./components/ViewPortal/ViewPortal.js"></script>
+
 
         <script src="./script/app.js"></script>
     </body>

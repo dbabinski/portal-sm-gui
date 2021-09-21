@@ -24,8 +24,8 @@ Vue.component("menu-main", {
                 <!--<li v-show='logged'><router-link tag="a" to="/kody-jednorazowe">Kody</router-link></li>-->
                 <li v-show='logged'><router-link tag="a" to="/slowniki">Słowniki</router-link></li>
                 <li v-show='logged'><router-link tag="a" to="/konfiguracja">Konfiguracja</router-link></li>   
-                <li v-show='logged'><router-link tag="a" to="/logowanie">Logowanie</router-link></li>   
-                             
+                <li v-show='logged'><router-link tag="a" to="/logowanie">Logowanie</router-link></li>         
+
                 <li v-if="$route.path.includes('/zmiana-hasla/')"><router-link tag="a" to="/zmiana-hasla">Zmiana hasła</router-link></li>
                 <li v-if="$route.path.includes('/aktywacja-konta/')"><router-link tag="a" to="/aktywacja-konta">Aktywacja konta</router-link></li>
                 <!--
