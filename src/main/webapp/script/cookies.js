@@ -1,5 +1,5 @@
 class Cookies {
-    getCookie(cname='e-uslugi.meta') {
+    getCookie(cname='sm-portal.meta') {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(";");
@@ -15,7 +15,7 @@ class Cookies {
         return "";
     }
 
-    getJSON(cname='e-uslugi.meta') {
+    getJSON(cname='sm-portal.meta') {
         var cookie = this.getCookie(cname);
         if(!utils.isNull(cookie)) {
             try {
@@ -26,4 +26,17 @@ class Cookies {
         }
         return null;
     }    
+
+    baset64ToJSON(cname='sm-portal.meta') {
+        var cookie = this.getCookie(cname);
+        if (!utils.isNull(cookie)) {
+            try {
+                var decodedCookie = atob(utils.unquote(cookie));
+                return JSON.parse(decodedCookie);
+            } catch (e) {
+                console.error(e.name + ": " + e.message);
+            }
+        }
+        return null;
+    }
 }

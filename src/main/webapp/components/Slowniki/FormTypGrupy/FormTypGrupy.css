@@ -1,9 +1,0 @@
-.form-typ-grupy .grid {
-    display: grid;
-    grid-template-columns: max-content auto;
-    align-items: center;
-}
-.form-typ-grupy input,
-.form-typ-grupy textarea  {
-    width: 100%;
-}

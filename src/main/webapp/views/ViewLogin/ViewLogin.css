@@ -1,0 +1,10 @@
+.view-portal-main{
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.v-application .rounded-bl-xl {
+    border-bottom-left-radius: 300px !important;
+}
+.v-application .rounded-br-xl {
+    border-bottom-right-radius: 300px !important;
+}

@@ -1,4 +1,4 @@
-:root {
+ /* :root {
     --form-width: 800px;
 }
 
@@ -16,7 +16,7 @@ select {
 }
 
 input:invalid {
-    /* wyłączenie -moz-ui-invalid */
+    
     box-shadow: none;
 }
 
@@ -71,11 +71,11 @@ select{
     appearance: none;
 }
 
-/* input[type=number]::-moz-inner-spin-button,
+input[type=number]::-moz-inner-spin-button,
 input[type=number]::-moz-outer-spin-button {
       -webkit-appearance: none;
       margin: 0;
-} */
+}
 
 input[type=text]:disabled {
     background-color: var(--main-background-disabled);
@@ -130,4 +130,4 @@ input[readonly]:focus {
 
 .uwaga {
     color: var(--main-error-message-color);
-}
+}  */

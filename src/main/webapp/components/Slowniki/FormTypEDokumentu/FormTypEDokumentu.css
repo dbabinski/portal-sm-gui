@@ -1,9 +1,0 @@
-.form-typ-edokumentu .grid {
-    display: grid;
-    grid-template-columns: max-content auto;
-    align-items: center;
-}
-.form-typ-edokumentu input,
-.form-typ-edokumentu textarea  {
-    width: 100%;
-}

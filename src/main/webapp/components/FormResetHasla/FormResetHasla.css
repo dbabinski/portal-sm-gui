@@ -1,8 +1,0 @@
-.form-reset-hasla .grid {
-    display: grid;    
-    grid-template-columns: max-content auto;
-    align-items: center;
-}
-.form-reset-hasla input {
-    width: 100%;
-}

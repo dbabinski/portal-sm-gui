@@ -1,9 +1,0 @@
-.form-typ-komunikatu .grid {
-    display: grid;
-    grid-template-columns: max-content auto;
-    align-items: center;
-}
-.form-typ-komunikatu input,
-.form-typ-komunikatu textarea  {
-    width: 100%;
-}

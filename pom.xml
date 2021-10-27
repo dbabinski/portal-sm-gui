@@ -112,7 +112,7 @@
         </plugins>
     </build>
     
-    <distributionManagement>
+<!--    <distributionManagement>
         <repository>
             <id>softmedica-releases</id>
             <url>http://softmedica.no-ip.biz:8081/artifactory/softmedica-releases/</url>
@@ -143,6 +143,6 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
-    </pluginRepositories>
+    </pluginRepositories>-->
 
 </project>

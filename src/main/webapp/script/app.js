@@ -1,72 +1,31 @@
-const ViewPortalMain = { template: "<view-portal-main></view-portal-main>"}
-const ViewPortal = { template: "<view-portal></view-portal>" };
-const ViewAktualnosci = { template: "<view-aktualnosci></view-aktualnosci>" };
+const ViewLogIn = { template: "<view-login></view-login>"};
+const ViewPortalMain = { template: "<view-portal-main></view-portal-main>"};
+const ViewAdmin = { template: "<view-admin></view-admin>" };
+const ViewPanel = { template: "<view-panel></view-panel>"}
 const ViewPacjenci = { template: "<view-pacjenci></view-pacjenci>" };
 const ViewUzytkownicyKonta = { template: "<view-uzytkownicy-konta></view-uzytkownicy-konta>" };
-const ViewSlowniki = {  template: "<view-slowniki></view-slowniki>" };
-const ViewLogowanie = {  template: "<view-logowanie></view-logowanie>" };
 const ViewKonfiguracja = { template: "<view-konfiguracja></view-konfiguracja>" };
-const ViewKonto = { template: "<view-konto></view-konto>" };
 
-const ViewImport = { template: "<view-import></view-import>" };
-const ViewAktywacjaKonta = { template: "<view-aktywacja-konta :uuid='$route.params.uuid'></view-aktywacja-konta>" };
-const ViewZmianaHasla = { template: "<view-zmiana-hasla :token='$route.params.token'></view-zmiana-hasla>" };
-const ViewKodyJednorazowe = { template: "<view-kody-jednorazowe></view-kody-jednorazowe>" };
-const ViewLogi = { template: "<view-logi></view-logi>" };
-const ViewLogowaniaDoSystemu = { template: "<view-logowania-do-systemu></view-logowania-do-systemu>" };
-const ViewAktualnieZalogowani = { template: "<view-aktualnie-zalogowani></view-aktualnie-zalogowani>" };
-const ViewTypyDokumentow = { template: "<view-typy-dokumentow></view-typy-dokumentow>"};
-const ViewTypyEDokumentow = { template: "<view-typy-edokumentow></view-typy-edokumentow>"};
-const ViewTypyGrup = { template: "<view-typy-grup></view-typy-grup>"};
-const ViewGrupyUzytkownikow = { template: "<view-uzytkownicy-grupy></view-uzytkownicy-grupy>"};
-const ViewUzytkownicyUprawnienia = { template: "<view-uzytkownicy-uprawnienia></view-uzytkownicy-uprawnienia>"};
-const ViewTypyKomunikatow = { template: "<view-typy-komunikatow></view-typy-komunikatow>"};
-const ViewKomorkiOrganizacyjne = { template: "<view-komorki-organizacyjne></view-komorki-organizacyjne>"};
-const ViewTypyPowiadomień = { template: "<view-typy-powiadomien></view-typy-powiadomien>"};
+const ViewPanelKlienta = { template: "<view-panel-klienta></view-panel-klienta>" };
 
 const routes = [
-    { path: '*', redirect: "/aktualnosci" },
-    { path: "/", redirect: "/aktualnosci" },
-    { path: "/aktualnosci", component: ViewAktualnosci},
-    { path: "/pacjenci", component: ViewPacjenci },
-    { path: "/uzytkownicy-konta", component: ViewUzytkownicyKonta },
-    { path: "/slowniki", component: ViewSlowniki,
+    { path: '*', redirect: "/login" },
+    { path: "/", redirect: "/login" },
+    { path: "/login", component: ViewLogIn},
+    { path: "/admin", component: ViewAdmin,
         children: [
-            { path: '/', redirect: "/komorki-organizacyjne" },
-            { path: "/typy-dokumentow", component: ViewTypyDokumentow},
-            { path: "/typy-e-dokumentow", component: ViewTypyEDokumentow},
-            { path: "/typy-grup-uzytkownikow", component: ViewTypyGrup},
-            { path: "/grupy-uzytkownikow", component: ViewGrupyUzytkownikow},
-            { path: "/uzytkownicy-grupy-uprawnienia", component: ViewUzytkownicyUprawnienia},
-            { path: "/typy-komunikatow", component: ViewTypyKomunikatow},
-            { path: "/komorki-organizacyjne", component: ViewKomorkiOrganizacyjne},
-            { path: "/typy-powiadomien", component: ViewTypyPowiadomień},
-        ]
-    },
-    { path: "/konfiguracja", component: ViewKonfiguracja },
-    { path: "/import", component: ViewImport },
-    { path: "/kody-jednorazowe", component: ViewKodyJednorazowe },
-    { path: "/aktywacja-konta/:uuid", component: ViewAktywacjaKonta },
-    { path: "/zmiana-hasla/:token", component: ViewZmianaHasla},
-    { path: "/logowanie", component: ViewLogowanie,
-		children: [
-			{ path: '/', redirect: "/logi" },
-			{ path: "/logi", component: ViewLogi},
-            { path: "/logowania-do-systemu", component: ViewLogowaniaDoSystemu},
-            { path: "/aktualnie-zalogowani", component: ViewAktualnieZalogowani},
-		]
-	},
-    { path: "/nowe-konto",
-        beforeEnter: (to, from, next) => {
-            router.push('/aktualnosci');
-            app.newAccount();
-        }
-    },
-    { path: "/konto", component: ViewKonto }
+            { path: '/', redirect: "panel" },
+            { path: 'panel', component: ViewPanel },
+            { path: 'uzytkownicy', component: ViewUzytkownicyKonta },
+            { path: 'ustawienia', component: ViewKonfiguracja },
+            { path: 'pacjenci', component: ViewPacjenci },
+        ]},
+    { path: "/klient", component: ViewPanelKlienta }
 ];
 
 const router = new VueRouter({
-    routes: routes
+    routes: routes,
+    mode: 'history',
 });
 
 router.beforeEach(async (to, from, next) => {
@@ -82,21 +41,25 @@ const store = new Vuex.Store({
     strict: true,
     state: {
         email: "",
+        permissions: {}
     },
     mutations: {
         //synchronicznie
         initialiseStore(state) {
-            let cookie = cookies.getJSON();
+            let cookie = cookies.baset64ToJSON();
             if(cookie != null) {
                 state.email = cookie.email;
+                state.permissions = cookie.permissions;
             }
         },
         login(state, payload) {
             state.email = payload.email;
+            state.permissions = payload.permissions;
         },
         logout(state) {
-            localStorage.removeItem("e-uslug.store");
+            localStorage.removeItem("sm-portal.store");
             state.email = "";
+            state.permissions = {};
         }
     },
     actions: {
@@ -114,6 +77,9 @@ const store = new Vuex.Store({
         },
         isLogged(state) {
             return !utils.isNull(state.email);
+        },
+        permissions(state) {
+            return state.permissions;
         }
     }
 });
@@ -144,7 +110,7 @@ var app = new Vue({
 
         store.subscribe((mutation, state) => {
             if (mutation == 'initialiseStore' || mutation.type == "login" || mutation.type == "logout") {
-                localStorage.setItem("e-uslugi.store", JSON.stringify(state));
+                localStorage.setItem("sm-portal.store", JSON.stringify(state));
             }
         });
         store.commit("initialiseStore");
@@ -153,6 +119,7 @@ var app = new Vue({
             self.checkLogin();
         }, 5000);
     },
+
     methods: {
         toast(message) {
             this.$refs.toast.show(message);
@@ -207,7 +174,12 @@ var app = new Vue({
             return response;
         },
         login(message) {
-            app.getDialogLogin().clear().show(message);
+            if ( store.getters.permissions.administracja.read ) {
+                router.push("/admin");
+            } else {
+                router.push("/klient");
+            }
+
         },
         logout(message) {
             const self = this;
@@ -215,19 +187,18 @@ var app = new Vue({
                 .then(res => {
                     store.dispatch("logout");
                     router.push("/");
-                    app.getDialogLogin().show(message);
                     self.logged = false;
                     return res.json();
                 })
                 .then(json => {
-                    // app.toast(json.komunikat);
+                    app.toast(json.komunikat);
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
         checkLogin() {
-            let cookie = cookies.getJSON();
+            let cookie = cookies.baset64ToJSON();
             if(utils.isNull(cookie)) {
                 this.logged = false;
                 if(store.getters.isLogged) {
@@ -238,8 +209,10 @@ var app = new Vue({
                 this.logged = true;
                 if(!store.getters.isLogged) {
                     store.dispatch("login", {
-                        email: cookie.email
+                        email: cookie.email,
+                        permissions: cookie.permissions
                     });
+                     
                 }
             }
         },

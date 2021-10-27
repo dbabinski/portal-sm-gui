@@ -2,19 +2,22 @@ Vue.component("sm-toast", {
     data: function() {
         return {
             message: "Etykieta",            
-            visible: false
+            snackbar: false,
         }
     },
     methods: {
         show: function(message) {                
             this.message = message;  
-            this.visible = true;           
-            setTimeout(function() {
-                this.visible = false
-            }.bind(this), 3000);
+            this.snackbar = true;
         }
     },
     template: `
-        <div class='sm-toast' :class="{'sm-toast-show': visible}">{{message}}</div>
+        <v-snackbar
+        v-model="snackbar"
+        color="blue"
+        bottom
+        :timeout="2000"
+        class="sm-toast"
+        >{{message}}</v-snackbar>
     `
 })
