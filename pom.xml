@@ -98,7 +98,10 @@
                                 <copy todir="../SoftMedica-DIST/SM-Portal" flatten="true" overwrite="true" verbose="true" failonerror="true">
                                     <fileset dir="target"  includes="*.war"/>
                                 </copy>
-                                <copy todir="\\wsl$\Ubuntu-20.04\home\dbabinski\docker-deployments\sm-portal-docker\volumes\wildfly\deployments" flatten="true" overwrite="true" verbose="true" failonerror="true">
+<!--                                <copy todir="\\wsl$\Ubuntu-20.04\home\dbabinski\docker-deployments\sm-portal-docker\volumes\wildfly\deployments" flatten="true" overwrite="true" verbose="true" failonerror="true">
+                                    <fileset dir="target"  includes="*.war"/>
+                                </copy>-->
+                                <copy todir="Z:\home\klaudia\docker\sm-portal-docker\volumes\wildfly\deployments" flatten="true" overwrite="true" verbose="true" failonerror="true">
                                     <fileset dir="target"  includes="*.war"/>
                                 </copy>
                             </tasks>
@@ -111,38 +114,4 @@
             </plugin>
         </plugins>
     </build>
-    
-<!--    <distributionManagement>
-        <repository>
-            <id>softmedica-releases</id>
-            <url>http://softmedica.no-ip.biz:8081/artifactory/softmedica-releases/</url>
-        </repository>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>softmedica-releases</id>
-            <name>SoftMedica Releases</name>
-            <url>http://softmedica.no-ip.biz:8081/artifactory/softmedica-releases/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>softmedica-releases</id>
-            <name>SoftMedica Releases</name>
-            <url>http://softmedica.no-ip.biz:8081/artifactory/softmedica-releases/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>-->
-
 </project>
