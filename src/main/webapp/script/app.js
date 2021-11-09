@@ -8,8 +8,10 @@ const ViewKonfiguracja = { template: "<view-konfiguracja></view-konfiguracja>" }
 
 const ViewPanelKlienta = { template: "<view-panel-klienta></view-panel-klienta>" };
 
+const Error = { template: "<error></error>"};
+
 const routes = [
-    { path: '*', redirect: "/login" },
+    { path: '*', component: Error },
     { path: "/", redirect: "/login" },
     { path: "/login", component: ViewLogIn},
     { path: "/admin", component: ViewAdmin,

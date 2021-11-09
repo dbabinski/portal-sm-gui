@@ -70,10 +70,11 @@ Vue.component("view-admin", {
                             </template>
 
                         </v-navigation-drawer>
+                        <router-view></router-view>
                     </v-card>
 
                     <div>
-                      <router-view></router-view>
+                      
                     </div>
 
 
