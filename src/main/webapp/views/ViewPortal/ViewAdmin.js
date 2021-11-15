@@ -70,6 +70,7 @@ Vue.component("view-admin", {
                             </template>
 
                         </v-navigation-drawer>
+                        <h1>Hello Admin</h1>
                         <router-view></router-view>
                     </v-card>
 
