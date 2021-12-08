@@ -1,12 +1,12 @@
 import { getJSON } from "@/lib/cookies";
 
-export function getToken() {
+export function getCookie() {
   try {
     let cookie = getJSON();
     if (cookie) {
-      return cookie.jti
+      return cookie
     }else {
-      return null
+      return ""
     }
   } catch (e) {
     console.error(e.name + ": " + e.message);

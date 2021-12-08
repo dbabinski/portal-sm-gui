@@ -1,7 +1,8 @@
 <template>
   <v-app>
-    <h1>Layout Dash</h1>
+    <h1>Layout Dash - Klient</h1>
     <v-card-text>
+      <v-btn @click.native="logout">Wyloguj</v-btn>
     </v-card-text>
   </v-app>
 </template>

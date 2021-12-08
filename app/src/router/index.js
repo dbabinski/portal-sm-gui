@@ -7,7 +7,13 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: () => import('@/layouts/index'),
+    component: () => import('@/layouts/user/index'),
+    meta: { title: 'Panel Klienta', affix: true }  
+  },
+
+  {
+    path: '/admin',
+    component: () => import('@/layouts/admin/index'),
     meta: { title: 'Panel Administratora', affix: true }  
   },
 

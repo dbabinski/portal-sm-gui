@@ -1,5 +1,5 @@
 import router from "./router";
-import { getToken } from "@/lib/auth";
+import { getCookie } from "@/lib/auth";
 import { isNull } from "@/lib/utils";
 import getPageTitle from "@/lib/get-page-title";
 
@@ -12,13 +12,22 @@ router.beforeEach(async (to, from, next) => {
   document.title = getPageTitle(to.meta.title);
 
   try {
-    const hasToken = getToken();
-
-    if (!isNull(hasToken)) {
-      if (to.path === "/login") {
-        next({ path: "/" });
+    // const hasToken = getCookie().jti;
+    // const cookie = getCookie().permissions.administracja.add;
+    // console.log(cookie);
+    if (!isNull(getCookie().jti)) {
+      if (getCookie().permissions.administracja.add === true) {
+        if (to.path === "/login" || to.path === "/" ) {
+          next({ path: "/admin" });
+        } else {
+          next();
+        }
       } else {
-        next();
+        if (to.path === "/login") {
+          next({ path: "/" });
+        } else {
+          next();
+        }
       }
     } else {
       if (whiteList.indexOf(to.path) !== -1) {
@@ -27,7 +36,7 @@ router.beforeEach(async (to, from, next) => {
         next(`/login?redirect=${to.path}`);
       }
     }
-  } catch(e) {
+  } catch (e) {
     console.error(e.name + ": " + e.message);
   }
 });

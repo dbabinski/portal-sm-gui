@@ -320,7 +320,6 @@ import store from "@/store";
 import router from "@/router/index";
 // import  toast  from '@/main'
 
-
 export default {
   data() {
     return {
@@ -394,7 +393,11 @@ export default {
           if (json.blad === true) {
             self.setMessage(json.komunikat);
           } else {
-            router.push({ path: this.redirect || "/" });
+            if (json.permissions.administracja.add === true) {
+              router.push({ path: this.redirect || "/admin" });
+            } else {
+              router.push({ path: this.redirect || "/" });
+            }
             // router.push("/");
             store.dispatch("login", {
               email: json.email,
