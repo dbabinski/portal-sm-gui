@@ -1,8 +1,13 @@
-import { getCookieMeta } from "@/lib/cookies";
+import { getJSON } from "@/lib/cookies";
 
 export function getToken() {
   try {
-    return getCookieMeta();
+    let cookie = getJSON();
+    if (cookie) {
+      return cookie.jti
+    }else {
+      return null
+    }
   } catch (e) {
     console.error(e.name + ": " + e.message);
   }

@@ -1,34 +1,39 @@
-import router from './router'
-// import store from './store'
-import { getToken } from '@/lib/auth'
-import getPageTitle from '@/lib/get-page-title'
+import router from "./router";
+import { getToken } from "@/lib/auth";
+import { isNull } from "@/lib/utils";
+import getPageTitle from "@/lib/get-page-title";
 
-const whiteList = ['/login', '/auth-redirect'] 
+const whiteList = ["/login", "/auth-redirect"];
 
-router.beforeEach(async(to, from, next) => {
-// after each change route - change page title
-// TODO - page load defult (app-test) title before loading: 
-// TODO fix it
-  document.title = getPageTitle(to.meta.title)
+router.beforeEach(async (to, from, next) => {
+  // after each change route - change page title
+  // TODO - page load defult (app-test) title before loading:
+  // TODO fix it
+  document.title = getPageTitle(to.meta.title);
 
-// TODO - fix get real use token
-  const hasToken = getToken()
+  try {
+    const hasToken = getToken();
 
-  if (hasToken) {
-    if (to.path === '/login') {
-      next({ path: '/' })
+    if (!isNull(hasToken)) {
+      if (to.path === "/login") {
+        next({ path: "/" });
+      } else {
+        next();
+      }
     } else {
-        next()
+      if (whiteList.indexOf(to.path) !== -1) {
+        next();
+      } else {
+        next(`/login?redirect=${to.path}`);
+      }
     }
-  } else {
-    if (whiteList.indexOf(to.path) !== -1) {
-      next()
-    } else {
-      next(`/login?redirect=${to.path}`)
-    }
+  } catch(e) {
+    console.error(e.name + ": " + e.message);
   }
-})
+});
+
+// TODO - Add interval permissions check.
 
 router.afterEach(() => {
   // TODO progres bar
-})
+});

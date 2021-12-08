@@ -17,21 +17,7 @@ const routes = [
     hidden: true
   },
 
-  {
-    path: '/test',
-    component: () => import('@/views/testowy/index'),
-    meta: { title: 'Panel klienta', affix: true }  
-  }
-
 ]
-
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: process.env.BASE_URL,
-//   routes
-// })
-
-
 
 const createRouter = () => new VueRouter({
   mode: 'history', // require service support

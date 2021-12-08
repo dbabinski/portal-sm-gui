@@ -10,7 +10,10 @@ export default new Vuex.Store({
   strict: true,
   state: {
     email: "",
-    permissions: {}
+    permissions: {},
+    token: "",
+    scope: "",
+
   },
   mutations: {
     initialiseStore(state) {
@@ -18,16 +21,22 @@ export default new Vuex.Store({
       if(cookie != null) {
           state.email = cookie.email;
           state.permissions = cookie.permissions;
+          state.token = cookie.token;
+          state.token = cookie.scope;
       }
     },
     login(state, payload) {
         state.email = payload.email;
         state.permissions = payload.permissions;
+        state.token = payload.token;
+        state.scope = payload.scope;
     },
     logout(state) {
         localStorage.removeItem("sm-portal.store");
         state.email = "";
         state.permissions = {};
+        state.token = "";
+        state.scope = "";
     }
   },
   actions: {
@@ -47,6 +56,12 @@ export default new Vuex.Store({
     },
     permissions(state) {
         return state.permissions;
+    },
+    scope(state) {
+      return state.scope;
+    },
+    token(state) {
+      return state.token;
     }
   }
 })

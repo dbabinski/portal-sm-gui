@@ -320,12 +320,10 @@ import store from "@/store";
 import router from "@/router/index";
 // import  toast  from '@/main'
 
-import { getToken } from "@/lib/auth";
 
 export default {
   data() {
     return {
-      token: null,
       step: 1,
       message: null,
       errorMessage: null,
@@ -377,12 +375,6 @@ export default {
   },
 
   methods: {
-    reqToken() {
-      let token = getToken();
-      this.token = token;
-      console.log("getToken - from login page: " + token);
-    },
-
     setMessage(message) {
       this.message = message;
       return this;
@@ -407,6 +399,8 @@ export default {
             store.dispatch("login", {
               email: json.email,
               permissions: json.permissions,
+              token: json.token,
+              scope: json.scope,
             });
             // toast(json.komunikat);
             // this.clear();

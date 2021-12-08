@@ -1,12 +1,8 @@
 <template>
   <v-app>
     <h1>Layout Dash</h1>
-    <v-card>
-      <v-btn dark title @click.native="logout">logout</v-btn>
-    </v-card>
-    <v-card>
-      <router-link to="/test">Go to test</router-link>
-    </v-card>
+    <v-card-text>
+    </v-card-text>
   </v-app>
 </template>
 
@@ -15,7 +11,18 @@ import router from "@/router/index";
 import store from "@/store/index";
 
 export default {
+  data() {
+    return {
+    }
+  },
+
+  computed: {
+
+  },
+
   methods: {
+
+
     async logout() {
       //   const self = this;
       fetch("/sm-portal-server/autentykacja/logout")
