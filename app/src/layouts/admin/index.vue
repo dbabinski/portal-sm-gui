@@ -1,49 +1,29 @@
 <template>
-  <v-app>
-    <h1>Layout Dash</h1>
-    <h2>Administrator</h2>
-    <v-card-text>
-            <v-btn @click.native="logout">Wyloguj</v-btn>
-
-    </v-card-text>
+  <v-app id="inspire">
+    <v-navigation-drawer app>
+    </v-navigation-drawer>
+    <navbar />
+    <v-main>
+      <app-main />
+    </v-main>
   </v-app>
 </template>
 
 <script>
-import router from "@/router/index";
-import store from "@/store/index";
+import Navbar from './components/Navbar.vue';
 
 export default {
+  name: "LayoutAdmin",
+  components: {
+    AppMain: () => import("./components/AppMain.vue"),
+    Navbar
+
+  },
   data() {
     return {
-    }
+
+    };
   },
 
-  computed: {
-
-  },
-
-  methods: {
-
-
-    async logout() {
-      //   const self = this;
-      fetch("/sm-portal-server/autentykacja/logout")
-        .then((res) => {
-          router.push(`/`);
-          //   self.logged = false;
-          return res.json();
-        })
-        // .then((json) => {
-        //   app.toast(json.komunikat);
-        // })
-        .catch((error) => {
-          console.log(error);
-        });
-      await store.dispatch("logout");
-    },
-  },
-};
+}
 </script>
-
-<style></style>

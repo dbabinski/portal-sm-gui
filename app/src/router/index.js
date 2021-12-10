@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+import LayoutAdmin from '@/layouts/admin'
+
 const routes = [
   {
     path: '/',
@@ -13,8 +15,18 @@ const routes = [
 
   {
     path: '/admin',
-    component: () => import('@/layouts/admin/index'),
-    meta: { title: 'Panel Administratora', affix: true }  
+    component: LayoutAdmin,
+    redirect: 'dashboard',
+    children: [
+      {
+        path: '/dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'dashboard',
+        meta: { title: 'Panel', affix: true }
+      }
+    ]
+    // component: () => import('@/layouts/admin/index'),
+    // meta: { title: 'Panel Administratora', affix: true }  
   },
 
   {
