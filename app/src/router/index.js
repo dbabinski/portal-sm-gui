@@ -5,12 +5,21 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import LayoutAdmin from '@/layouts/admin'
+import LayoutUser from '@/layouts/user'
 
-const routes = [
+export const constantRoutes = [
   {
     path: '/',
-    component: () => import('@/layouts/user/index'),
-    meta: { title: 'Panel Klienta', affix: true }  
+    component: LayoutUser,
+    redirect: 'dashboard-user',
+    children: [
+      {  
+        path: '/dashboard-user',
+        component: () => import('@/views/dashboard/user'),
+        name: 'dashboard-user',
+        meta: { title: 'Panel Klienta', affix: true }
+      }  
+    ]  
   },
 
   {
@@ -40,7 +49,7 @@ const routes = [
 const createRouter = () => new VueRouter({
   mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: routes
+  routes: constantRoutes
 })
 
 const router = createRouter()

@@ -399,7 +399,7 @@ export default {
               router.push({ path: this.redirect || "/" });
             }
             // router.push("/");
-            store.dispatch("login", {
+            store.dispatch("user/login", {
               email: json.email,
               permissions: json.permissions,
               token: json.token,

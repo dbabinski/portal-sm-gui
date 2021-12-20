@@ -1,12 +1,12 @@
 <template>
     <v-card class="dash">
-      <h2>Dashboard</h2>
+      <h2>Dashboard - User</h2>
     </v-card>
 </template>
 
 <script>
 export default {
-  name: 'Dashboard',
+  name: 'DashboardUser',
   data() {
     return {};
   },

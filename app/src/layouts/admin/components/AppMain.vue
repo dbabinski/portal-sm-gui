@@ -1,7 +1,9 @@
 <template>
-  <section class="app-main">
+  <!-- <section class="app-main"> -->
+      <v-container app>  
         <router-view :key="key" />
-  </section>
+      </v-container>
+  <!-- </section> -->
 </template>
 
 <script>
@@ -15,12 +17,12 @@ export default {
 }
 </script>
 
-<style scoped>
-.app-main {
-  /* 50= navbar  50  */
-  min-height: calc(100vh - 84px);
+<style>
+/* .app-main {
+
+  min-height: calc(100vh - 50px);
   width: 100%;
   position: relative;
   overflow: hidden;
-}
+} */
 </style>

@@ -33,12 +33,12 @@ new Vue({
       event.preventDefault();
     });
 
-    store.subscribe((mutation, state) => {
-      if (mutation == 'initialiseStore' || mutation.type == "login" || mutation.type == "logout") {
+    this.$store.subscribe((mutation, state) => {
+      if (mutation == 'user/initialiseStore' || mutation.type == "user/login" || mutation.type == "user/logout") {
           localStorage.setItem("sm-portal.store", JSON.stringify(state));
       }
     });
-    store.commit("initialiseStore");
+    this.$store.commit('user/initialiseStore');
     this.checkLogin()
     // let check = setInterval(function() {
     //   self.checkLogin();
@@ -65,7 +65,7 @@ new Vue({
       const self = this;
       fetch("/sm-portal-server/autentykacja/logout")
         .then(res => {
-          store.dispatch("logout");
+          store.dispatch("user/logout");
           router.push("/");
           self.logged = false;
           return res.json();
@@ -82,13 +82,13 @@ new Vue({
       if(isNull(cookie)) {
         this.logged = false;
         if(store.getters.isLogged) {
-          store.dispatch("logout");
+          store.dispatch("user/logout");
           router.push("/");
         }
       } else {
         this.logged = true;
         if(!store.getters.isLogged) {
-          store.dispatch("login", {
+          store.dispatch("user/login", {
             email: cookie.email,
             permissions: cookie.permissions
           });
