@@ -1,8 +1,10 @@
 module.exports = {
     // options...
     devServer: {
-        disableHostCheck: true
+        disableHostCheck: true,
+
     },
-    
-        
+    configureWebpack: {
+        devtool: 'source-map'
+      }
 }
