@@ -4,6 +4,7 @@
     <v-card-text>
       <v-btn @click.native="logout">Wyloguj</v-btn>
     </v-card-text>
+    <v-card>Panel Klienta</v-card>
   </v-app>
 </template>
 

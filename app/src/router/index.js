@@ -1,13 +1,26 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 
+Vue.use(Router)
 
-Vue.use(VueRouter)
-
+/* Layout */
 import LayoutAdmin from '@/layouts/admin'
 import LayoutUser from '@/layouts/user'
 
-export const constantRoutes = [
+
+
+ export const constantRoutes = [
+  {
+    path: '/redirect',
+    component: LayoutAdmin,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
   {
     path: '/',
     component: LayoutUser,
@@ -16,7 +29,7 @@ export const constantRoutes = [
       {  
         path: '/dashboard-user',
         component: () => import('@/views/dashboard/user'),
-        name: 'dashboard-user',
+        name: 'Panel Klienta',
         meta: { title: 'Panel Klienta', affix: true }
       }  
     ]  
@@ -25,17 +38,28 @@ export const constantRoutes = [
   {
     path: '/admin',
     component: LayoutAdmin,
-    redirect: 'dashboard',
+    redirect: '/admin/dashboard',
     children: [
       {
-        path: '/dashboard',
+        path: '/admin/dashboard',
         component: () => import('@/views/dashboard/index'),
-        name: 'dashboard',
-        meta: { title: 'Panel', affix: true }
+        name: 'Panel Administratora',
+        meta: { title: 'Panel Administratora', affix: true }
+      },
+      {
+        path: '/admin/documentation',
+        component: () => import('@/views/documentation/index'),
+        name: 'Documentation',
+        meta: { title: 'Dokumentacja', icon: 'documentation', affix: true }
+      },
+      {
+        path: '/admin/users',
+        component: () => import('@/views/users/index'),
+        name: 'Users',
+        meta: { title: 'Użytkownicy', icon: 'documentation', affix: true }
       }
     ]
-    // component: () => import('@/layouts/admin/index'),
-    // meta: { title: 'Panel Administratora', affix: true }  
+
   },
 
   {
@@ -46,15 +70,15 @@ export const constantRoutes = [
 
 ]
 
-const createRouter = () => new VueRouter({
+
+const createRouter = () => new Router({
   mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
 
 const router = createRouter()
-
-// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+  1
 export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router

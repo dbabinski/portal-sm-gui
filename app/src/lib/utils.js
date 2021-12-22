@@ -108,4 +108,8 @@ export function waitUntil(condition) {
   });
 }
 
+export function isExternal(path){
+  return /^(https?:|mailto:|tel:)/.test(path)
+}
+
 

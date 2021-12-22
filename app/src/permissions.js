@@ -12,9 +12,7 @@ router.beforeEach(async (to, from, next) => {
   document.title = getPageTitle(to.meta.title);
 
   try {
-    // const hasToken = getCookie().jti;
-    // const cookie = getCookie().permissions.administracja.add;
-    // console.log(cookie);
+
     if (!isNull(getCookie().jti)) {
       if (getCookie().permissions.administracja.add === true) {
         if (to.path === "/login" || to.path === "/" ) {

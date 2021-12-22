@@ -6,6 +6,7 @@
       @click="toggleSidebar"
     />
     <breadcrumb class="breadcrumb-container" />
+    <v-spacer></v-spacer>
     <user-menu class="usermenu-container"/>
     <!-- <v-btn 
     depressed
