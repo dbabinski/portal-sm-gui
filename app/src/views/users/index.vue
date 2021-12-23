@@ -1,47 +1,150 @@
 <template>
-  <v-card>
-    <v-card>
-      <v-card-title>
-        Lista użytkowników
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-        <v-text-field
-          append-icon="fas fa-search"
-          label="Szukaj"
-          single-line
-          hide-details
-          v-model="search"
-        >
-        </v-text-field>
-      </v-card-title>
-      <v-data-table 
-        :headers="headers" 
-        :items="konta" 
-        :search="search"
-        dense
+  <v-card elevation="2">
+    <v-data-table :headers="headers" :items="konta" :search="search">
+      <template v-slot:top>
+        <v-toolbar flat>
+          <v-toolbar-title>Lista użytkowników</v-toolbar-title>
+          <v-divider class="mx-4" inset vertical></v-divider>
+          <v-spacer></v-spacer>
+          <v-text-field
+            append-icon="fas fa-search"
+            label="Szukaj"
+            single-line
+            hide-details
+            v-model="search"
+          />
+          <v-spacer></v-spacer>
+          <v-dialog v-model="dialog" max-width="600px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
+                Dodaj użytkownika
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title>
+                <span class="text-h5">{{ formTitle }}</span>
+              </v-card-title>
 
-      > 
-      </v-data-table>
-    </v-card>
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12" sm="12" md="12">
+                      <v-text-field
+                        v-model="editedItem.imie"
+                        label="Imię"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="12" md="12">
+                      <v-text-field
+                        v-model="editedItem.nazwisko"
+                        label="Nazwisko"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="12" md="12">
+                      <v-text-field
+                        v-model="editedItem.email"
+                        label="Adres e-mail"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="12" md="12">
+                      <v-text-field
+                        v-model="editedItem.login"
+                        label="Login"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="close">
+                  Anuluj
+                </v-btn>
+                <v-btn color="blue darken-1" text @click="saveItem">
+                  Zapisz</v-btn
+                >
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+
+          <v-dialog v-model="dialogDelete" max-width="500px">
+            <v-card>
+              <v-card-title class="text-h5"
+                >Napewno chcesz usunąć użytkownika?</v-card-title
+              >
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="closeDelete"
+                  >Anuluj</v-btn
+                >
+                <v-btn color="blue darken-1" text @click="confirmDelete"
+                  >OK</v-btn
+                >
+                <v-spacer></v-spacer>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-toolbar>
+      </template>
+      <template v-slot:[`item.grupaOpis`]="{ item }">
+        <v-chip :color="getColorsOfPerrmission(item.grupaOpis)" dark>{{
+          item.grupaOpis
+        }}</v-chip>
+      </template>
+
+      <template v-slot:[`item.actions`]="{ item }">
+        <v-icon small class="mr-10" @click="editItem(item)"
+          >fas fa-user-edit</v-icon
+        >
+        <v-icon small @click.stop="deleteItem(item)">
+          fas fa-user-times
+        </v-icon>
+      </template>
+      <template v-slot:no-data>
+        <v-btn color="primary" @click="refreshData"> Odśwież </v-btn>
+      </template>
+    </v-data-table>
   </v-card>
 </template>
 
 <script>
+// import { mapState } from 'vuex';
+//import { copyJSON } from "@/lib/utils";
+
 export default {
   name: "Users",
   data() {
     return {
+      dialog: false,
+      dialogDelete: false,
       konta: [],
       limit: 20,
       liczbaDostepnychRekordow: 0,
       loaded: Boolean,
-      search: '',
+      search: "",
       headers: [
-        { text: "Imię", align: "start", value: "imie" },
-        { text: "Nazwisko", value: "nazwisko" },
-        { text: "Adres e-mail", value: "email" },
-        { text: "Login", value: "login" },
+        // { text: "ID", align: "start", value: "id" },
+        { text: "Login", value: "login", width: "150px" },
+        { text: "Rola", value: "grupaOpis", width: "60px" },
+        { text: "Imię", value: "imie", width: "150px" },
+        { text: "Nazwisko", value: "nazwisko", width: "150px" },
+        { text: "Adres e-mail", value: "email", width: "900px" },
+        { text: "Edytuj / Usuń", value: "actions", sortable: false },
       ],
+      editedIndex: -1,
+      editedItem: {
+        imie: "",
+        nazwisko: "",
+        email: "",
+        login: "",
+      },
+      defaultItem: {
+        imie: "",
+        nazwisko: "",
+        email: "",
+        login: "",
+      },
     };
   },
 
@@ -60,12 +163,36 @@ export default {
     isLoaded() {
       return this.konta.lenght == this.liczbaDostepnychRekordow;
     },
+    formTitle() {
+      return this.editedIndex === -1
+        ? "Dodaj dane użytkownika"
+        : "Edytuj dane użytkownika";
+    },
   },
-  mounted() {
+
+  mounted() {},
+
+  watch: {
+    dialog(val) {
+      val || this.close();
+    },
+    dialogDelete(val) {
+      val || this.closeDelete();
+    },
+  },
+
+  created() {
     this.loadData();
   },
 
   methods: {
+    getColorsOfPerrmission(grupaOpis) {
+      if (grupaOpis) {
+        if (grupaOpis === "Administratorzy") return "blue";
+        if (grupaOpis === "Użytkownicy") return "green";
+      } else return "white"
+    },
+
     loadData() {
       this.konta = [];
       this.appendData();
@@ -74,7 +201,7 @@ export default {
       this.appendData(true);
     },
     appendData(refresh) {
-      // this.$nextTick(() => {
+      this.$nextTick(() => {
         this.loaded = true;
         let params = {
           filter: "",
@@ -110,14 +237,89 @@ export default {
               });
             }
           });
-      // });
+      });
+    },
+
+    addItem() {},
+
+    saveItem() {
+      fetch("../sm-portal-server/uzytkownicy/konta/", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(this.editedItem),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.blad) {
+            //TODO: handleErrors
+          } else {
+            //TODO: konto zostało zapisane (zmienione/edytowane)
+            if (this.editedIndex > -1) {
+              Object.assign(this.konta[this.editedIndex], this.editedItem);
+            } else {
+              this.konta.push(this.editedItem);
+            }
+            this.close();
+          }
+          this.refreshData();
+        });
+    },
+
+    editItem(item) {
+      this.editedIndex = this.konta.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+
+    deleteItem(item) {
+      this.editedIndex = this.konta.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialogDelete = true;
+    },
+
+    confirmDelete() {
+      //TODO: parametr metody : "object"
+
+      fetch("../sm-portal-server/uzytkownicy/konta/" + this.editedItem.id, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.blad) {
+            //TODO: handleErrors
+          } else {
+            this.konta.splice(this.editedIndex, 1);
+            this.closeDelete();
+            this.refreshData;
+          }
+        });
+    },
+
+    close() {
+      this.dialog = false;
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
+      });
+    },
+    closeDelete() {
+      this.dialogDelete = false;
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
+      });
     },
   },
 };
 </script>
 
 <style scoped>
-.dash{
+.dash {
   color: #777777;
 }
 </style>

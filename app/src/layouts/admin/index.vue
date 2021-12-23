@@ -15,6 +15,7 @@ export default {
   name: "LayoutAdmin",
   data(){
     return{
+      drawer: null
     }
   },
   components: {

@@ -21,7 +21,7 @@
       <v-list-item
         link
       >
-        <v-list-item-title v-model="email"><p>{{ user.email }}</p></v-list-item-title>
+        <v-list-item-title v-model="user.email"><p>{{ user.email }}</p></v-list-item-title>
       </v-list-item>
       <v-divider/>
       <v-list-item
