@@ -21,36 +21,48 @@
               </v-btn>
             </template>
             <v-card>
-              <v-card-title>
-                <span class="text-h5">{{ formTitle }}</span>
+              <v-card-title class="px-8 mb-4">
+                <span class="text-h6 font-weight-medium text-uppercase">{{
+                  formTitle
+                }}</span>
               </v-card-title>
-
+              <v-divider></v-divider>
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" sm="12" md="12">
+                    <v-col cols="6" sm="12" md="5">
                       <v-text-field
                         v-model="editedItem.imie"
                         label="Imię"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12" sm="12" md="12">
+                    <v-col cols="6" sm="12" md="5">
                       <v-text-field
                         v-model="editedItem.nazwisko"
                         label="Nazwisko"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12" sm="12" md="12">
+                    <v-col cols="10" sm="12" md="10">
                       <v-text-field
                         v-model="editedItem.email"
                         label="Adres e-mail"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12" sm="12" md="12">
+                    <v-col cols="6" sm="12" md="5">
                       <v-text-field
                         v-model="editedItem.login"
                         label="Login"
                       ></v-text-field>
+                    </v-col>
+                    <v-col cols="6" sm="12" md="5" class="mt-4">
+                      <v-autocomplete
+                        dense
+                        small-chips
+                        label="Grupa"
+                        v-model="editedItem.grupaOpis"
+                        :items="grupyUzytkownikow"
+                      >
+                      </v-autocomplete>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -86,6 +98,7 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
+        <v-divider class="mx-6"></v-divider>
       </template>
       <template v-slot:[`item.grupaOpis`]="{ item }">
         <v-chip :color="getColorsOfPerrmission(item.grupaOpis)" dark>{{
@@ -119,6 +132,7 @@ export default {
       dialog: false,
       dialogDelete: false,
       konta: [],
+      grupyUzytkownikow: [],
       limit: 20,
       liczbaDostepnychRekordow: 0,
       loaded: Boolean,
@@ -182,7 +196,7 @@ export default {
   },
 
   created() {
-    this.loadData();
+    this.loadData(); 
   },
 
   methods: {
@@ -190,12 +204,14 @@ export default {
       if (grupaOpis) {
         if (grupaOpis === "Administratorzy") return "blue";
         if (grupaOpis === "Użytkownicy") return "green";
-      } else return "white"
+      } else return "whitedee";
     },
 
     loadData() {
       this.konta = [];
       this.appendData();
+      this.grupyUzytkownikow = [];
+      this.getGrupy(); 
     },
     refreshData() {
       this.appendData(true);
@@ -240,9 +256,51 @@ export default {
       });
     },
 
+    getGrupy(){
+      this.$nextTick(() => {
+        fetch("../sm-portal-server/uzytkownicy/grupy", {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json; charset=UTF=8",
+          },
+        })
+          .then((res) => {
+            return res;
+          })
+          .then((res) => res.json())
+          .then((json) => {
+            if(json.blad) {
+              //TODO: handle errors
+              console.log("REST ERROR: /sm-portal-server/uzytkownicy/grupy");
+            } else {
+              json.dane.grupy.forEach((grupa) => {
+                this.grupyUzytkownikow.push(grupa.opis);
+              })
+            }
+          })
+      })
+    },
+
+    setGrupy(){
+      if(this.editedItem.grupaOpis === "Użytkownicy") {
+        this.editedItem.idGrupa = 20;
+        this.editedItem.grupa.idTypGrupy = 4; 
+        this.editedItem.grupa.slownikTypyGrup.id = 4;
+        this.editedItem.grupa.slownikTypyGrup.nazwa = "Użytkownicy";
+        this.editedItem.grupa.id = 20;
+      } else {
+        this.editedItem.idGrupa = 19;
+        this.editedItem.grupa.idTypGrupy = 1; 
+        this.editedItem.grupa.slownikTypyGrup.id = 1;
+        this.editedItem.grupa.slownikTypyGrup.nazwa = "Administratorzy";
+        this.editedItem.grupa.id = 19;
+      }
+    },
+
     addItem() {},
 
     saveItem() {
+      this.setGrupy();
       fetch("../sm-portal-server/uzytkownicy/konta/", {
         method: "POST",
         headers: {
@@ -313,6 +371,11 @@ export default {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       });
+    },
+
+    removeChips(item) {
+      const index = this.values.indexOf(item.name);
+      if (index >= 0) this.values.splice(index, 1);
     },
   },
 };
