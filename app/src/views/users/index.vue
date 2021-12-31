@@ -14,7 +14,7 @@
             v-model="search"
           />
           <v-spacer></v-spacer>
-          <v-dialog v-model="dialog" max-width="600px">
+          <v-dialog v-model="dialog" max-width="700px">
             <template v-slot:activator="{ on, attrs }">
               <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
                 Dodaj użytkownika
@@ -64,6 +64,53 @@
                       >
                       </v-autocomplete>
                     </v-col>
+                    <v-col cols="4" sm="12" md="4" class="my-0 py-0">
+                      <v-switch
+                        color="rgb(255,2,2)"
+                        hint="zabl"
+                        v-model="editedItem.blokadaKonta"
+                        dense
+                        label="Zablokowano"
+                      >
+                      </v-switch>
+                    </v-col>
+                    <v-col cols="6" sm="12" md="6" class="my-0 py-0">
+                      <v-dialog
+                        ref="dialogDate"
+                        v-model="modalDate"
+                        :return-value.sync="date"
+                        persistent
+                        width="290px"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-text-field
+                            v-model="editedItem.blokadaKontaDo"
+                            label="Blokada konta do:"
+                            prepend-icon="far fa-calendar"
+                            readonly
+                            v-bind="attrs"
+                            v-on="on"
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker v-model="date" scrollable>
+                          <v-spacer></v-spacer>
+                          <v-btn
+                            text
+                            color="primary"
+                            @click="modalDate = false"
+                          >
+                            Cancel
+                          </v-btn>
+                          <v-btn
+                            text
+                            color="primary"
+                            @click="$refs.dialogDate.save(date)"
+                          >
+                            OK
+                          </v-btn>
+                        </v-date-picker>
+                      </v-dialog>
+                    </v-col>
                   </v-row>
                 </v-container>
               </v-card-text>
@@ -98,7 +145,7 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
-        <v-divider class="mx-6"></v-divider>
+        <v-divider class="mx-16"></v-divider>
       </template>
       <template v-slot:[`item.grupaOpis`]="{ item }">
         <v-chip :color="getColorsOfPerrmission(item.grupaOpis)" dark>{{
@@ -129,6 +176,8 @@ export default {
   name: "Users",
   data() {
     return {
+      date: null,
+      modalDate: false,
       dialog: false,
       dialogDelete: false,
       konta: [],
@@ -152,12 +201,32 @@ export default {
         nazwisko: "",
         email: "",
         login: "",
+        grupa: {
+          slownikTypyGrup: {
+            id: null,
+            nazwa: "",
+          },
+          aktywna: true,
+          id: 0,
+          idTypGrupy: 0,
+          opis: "",
+        },
       },
       defaultItem: {
         imie: "",
         nazwisko: "",
         email: "",
         login: "",
+        grupa: {
+          slownikTypyGrup: {
+            id: null,
+            nazwa: "",
+          },
+          aktywna: true,
+          id: 0,
+          idTypGrupy: 0,
+          opis: "",
+        },
       },
     };
   },
@@ -196,7 +265,7 @@ export default {
   },
 
   created() {
-    this.loadData(); 
+    this.loadData();
   },
 
   methods: {
@@ -210,8 +279,9 @@ export default {
     loadData() {
       this.konta = [];
       this.appendData();
+
       this.grupyUzytkownikow = [];
-      this.getGrupy(); 
+      this.getGrupy();
     },
     refreshData() {
       this.appendData(true);
@@ -256,7 +326,7 @@ export default {
       });
     },
 
-    getGrupy(){
+    getGrupy() {
       this.$nextTick(() => {
         fetch("../sm-portal-server/uzytkownicy/grupy", {
           method: "GET",
@@ -269,31 +339,37 @@ export default {
           })
           .then((res) => res.json())
           .then((json) => {
-            if(json.blad) {
+            if (json.blad) {
               //TODO: handle errors
               console.log("REST ERROR: /sm-portal-server/uzytkownicy/grupy");
             } else {
               json.dane.grupy.forEach((grupa) => {
                 this.grupyUzytkownikow.push(grupa.opis);
-              })
+              });
             }
-          })
-      })
+          });
+      });
     },
 
-    setGrupy(){
-      if(this.editedItem.grupaOpis === "Użytkownicy") {
+    setGrupy() {
+      if (this.editedItem.grupaOpis === "Użytkownicy") {
         this.editedItem.idGrupa = 20;
-        this.editedItem.grupa.idTypGrupy = 4; 
+        this.editedItem.grupa.idTypGrupy = 4;
+        this.editedItem.grupa.opis = "Użytkownicy";
         this.editedItem.grupa.slownikTypyGrup.id = 4;
         this.editedItem.grupa.slownikTypyGrup.nazwa = "Użytkownicy";
         this.editedItem.grupa.id = 20;
+
+        this.editedItem.kontoAktywne = true;
       } else {
         this.editedItem.idGrupa = 19;
-        this.editedItem.grupa.idTypGrupy = 1; 
+        this.editedItem.grupa.idTypGrupy = 1;
+        this.editedItem.grupa.opis = "Administratorzy";
         this.editedItem.grupa.slownikTypyGrup.id = 1;
         this.editedItem.grupa.slownikTypyGrup.nazwa = "Administratorzy";
         this.editedItem.grupa.id = 19;
+
+        this.editedItem.kontoAktywne = true;
       }
     },
 
@@ -310,6 +386,7 @@ export default {
       })
         .then((res) => res.json())
         .then((json) => {
+          console.log(JSON.stringify(this.editedItem));
           if (json.blad) {
             //TODO: handleErrors
           } else {
@@ -377,6 +454,13 @@ export default {
       const index = this.values.indexOf(item.name);
       if (index >= 0) this.values.splice(index, 1);
     },
+
+    setBanned() {
+      if (this.date) {
+        (this.editedItem.blokadaKonta = true),
+          (this.editedItem.blokadaKontaDo = this.date);
+      }
+    },
   },
 };
 </script>
@@ -384,5 +468,8 @@ export default {
 <style scoped>
 .dash {
   color: #777777;
+}
+.theme--light.v-label {
+  color: rgb(255, 0, 0) !important;
 }
 </style>
