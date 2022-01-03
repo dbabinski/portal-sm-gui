@@ -5,6 +5,10 @@
         <v-toolbar flat>
           <v-toolbar-title>Lista użytkowników</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
+          <v-radio-group  v-model="search" row dense class="mt-5" >
+            <v-radio value="Administratorzy" label="Administratorzy"></v-radio>
+            <v-radio value="Użytkownicy" label="Użytkownicy"></v-radio>
+          </v-radio-group>
           <v-spacer></v-spacer>
           <v-text-field
             append-icon="fas fa-search"
