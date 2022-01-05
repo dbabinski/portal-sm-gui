@@ -5,7 +5,7 @@
         <v-toolbar flat>
           <v-toolbar-title>Lista użytkowników</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
-          <v-radio-group  v-model="search" row dense class="mt-5" >
+          <v-radio-group v-model="search" row dense class="mt-5">
             <v-radio value="Administratorzy" label="Administratorzy"></v-radio>
             <v-radio value="Użytkownicy" label="Użytkownicy"></v-radio>
           </v-radio-group>
@@ -18,7 +18,7 @@
             v-model="search"
           />
           <v-spacer></v-spacer>
-          <v-dialog v-model="dialog" max-width="700px">
+          <v-dialog v-model="dialog" max-width="1200px">
             <template v-slot:activator="{ on, attrs }">
               <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
                 Dodaj użytkownika
@@ -34,86 +34,94 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="6" sm="12" md="5">
-                      <v-text-field
-                        v-model="editedItem.imie"
-                        label="Imię"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="6" sm="12" md="5">
-                      <v-text-field
-                        v-model="editedItem.nazwisko"
-                        label="Nazwisko"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="10" sm="12" md="10">
-                      <v-text-field
-                        v-model="editedItem.email"
-                        label="Adres e-mail"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="6" sm="12" md="5">
-                      <v-text-field
-                        v-model="editedItem.login"
-                        label="Login"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="6" sm="12" md="5" class="mt-4">
-                      <v-autocomplete
-                        dense
-                        small-chips
-                        label="Grupa"
-                        v-model="editedItem.grupaOpis"
-                        :items="grupyUzytkownikow"
-                      >
-                      </v-autocomplete>
-                    </v-col>
-                    <v-col cols="4" sm="12" md="4" class="my-0 py-0">
-                      <v-switch
-                        color="rgb(255,2,2)"
-                        hint="zabl"
-                        v-model="editedItem.blokadaKonta"
-                        dense
-                        label="Zablokowano"
-                      >
-                      </v-switch>
-                    </v-col>
-                    <v-col cols="6" sm="12" md="6" class="my-0 py-0">
-                      <v-dialog
-                        ref="dialogDate"
-                        v-model="modalDate"
-                        :return-value.sync="date"
-                        persistent
-                        width="290px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
+                    <v-col col="6" sm="12" md="6">
+                      <v-row>
+                        <v-col cols="5" sm="12" md="5">
                           <v-text-field
-                            v-model="editedItem.blokadaKontaDo"
-                            label="Blokada konta do:"
-                            prepend-icon="far fa-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
+                            v-model="editedItem.imie"
+                            label="Imię"
                           ></v-text-field>
-                        </template>
-                        <v-date-picker v-model="date" scrollable>
-                          <v-spacer></v-spacer>
-                          <v-btn
-                            text
-                            color="primary"
-                            @click="modalDate = false"
+                        </v-col>
+                        <v-col cols="5" sm="12" md="5">
+                          <v-text-field
+                            v-model="editedItem.nazwisko"
+                            label="Nazwisko"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="10" sm="12" md="10">
+                          <v-text-field
+                            v-model="editedItem.email"
+                            label="Adres e-mail"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="6" sm="12" md="5">
+                          <v-text-field
+                            v-model="editedItem.login"
+                            label="Login"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="6" sm="12" md="5" class="mt-4">
+                          <v-autocomplete
+                            dense
+                            small-chips
+                            label="Grupa"
+                            v-model="editedItem.grupaOpis"
+                            :items="grupyUzytkownikow"
                           >
-                            Cancel
-                          </v-btn>
-                          <v-btn
-                            text
-                            color="primary"
-                            @click="$refs.dialogDate.save(date)"
+                          </v-autocomplete>
+                        </v-col>
+                        <v-col cols="4" sm="12" md="4" class="my-0 py-0">
+                          <v-switch
+                            color="rgb(255,2,2)"
+                            hint="zabl"
+                            v-model="editedItem.blokadaKonta"
+                            dense
+                            label="Zablokowano"
                           >
-                            OK
-                          </v-btn>
-                        </v-date-picker>
-                      </v-dialog>
+                          </v-switch>
+                        </v-col>
+                        <v-col cols="6" sm="12" md="6" class="my-0 py-0">
+                          <v-dialog
+                            ref="dialogDate"
+                            v-model="modalDate"
+                            :return-value.sync="date"
+                            persistent
+                            width="290px"
+                          >
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-text-field
+                                v-model="editedItem.blokadaKontaDo"
+                                label="Blokada konta do:"
+                                prepend-icon="far fa-calendar"
+                                readonly
+                                v-bind="attrs"
+                                v-on="on"
+                              ></v-text-field>
+                            </template>
+                            <v-date-picker v-model="date" scrollable>
+                              <v-spacer></v-spacer>
+                              <v-btn
+                                text
+                                color="primary"
+                                @click="modalDate = false"
+                              >
+                                Cancel
+                              </v-btn>
+                              <v-btn
+                                text
+                                color="primary"
+                                @click="$refs.dialogDate.save(date)"
+                              >
+                                OK
+                              </v-btn>
+                            </v-date-picker>
+                          </v-dialog>
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-divider vertical class="my-10"></v-divider>
+                    <v-col cols="6" sm="12" md="6">
+
                     </v-col>
                   </v-row>
                 </v-container>
@@ -191,13 +199,13 @@ export default {
       loaded: Boolean,
       search: "",
       headers: [
-        // { text: "ID", align: "start", value: "id" },
+        { text: "ID", align: "start", value: "id" },
         { text: "Login", value: "login", width: "150px" },
         { text: "Rola", value: "grupaOpis", width: "60px" },
         { text: "Imię", value: "imie", width: "150px" },
         { text: "Nazwisko", value: "nazwisko", width: "150px" },
-        { text: "Adres e-mail", value: "email", width: "900px" },
-        { text: "Edytuj / Usuń", value: "actions", sortable: false },
+        { text: "Adres e-mail", value: "email" },
+        { text: "Zarządzaj użytkownikami", value: "actions", sortable: false, align: "right" },
       ],
       editedIndex: -1,
       editedItem: {
@@ -355,6 +363,29 @@ export default {
       });
     },
 
+    getKlienci(item){
+      let kontoId = { konto: item.id };
+      this.$nextTick(() => {
+        fetch("../sm-portal-server/uzytkownicy/konta/nadrzedni", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(kontoId),
+        })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(JSON.stringify(this.editedItem.id));
+          if(json.blad){
+            //TODO: handleErrors
+          } else {
+            console.log("good: ");
+            console.log(JSON.stringify(json));
+          }
+        })
+      })
+    },
+
     setGrupy() {
       if (this.editedItem.grupaOpis === "Użytkownicy") {
         this.editedItem.idGrupa = 20;
@@ -410,6 +441,8 @@ export default {
       this.editedIndex = this.konta.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
+
+      this.getKlienci(item);
     },
 
     deleteItem(item) {
@@ -475,5 +508,8 @@ export default {
 }
 .theme--light.v-label {
   color: rgb(255, 0, 0) !important;
+}
+.v-data-table-header th {
+  white-space: nowrap;
 }
 </style>
