@@ -121,11 +121,13 @@
                     </v-col>
                     <v-divider vertical class="mt-14 mb-10"></v-divider>
                     <v-col cols="6" sm="12" md="6">
+                      <div v-if="loading">
+                        <v-progress-circular></v-progress-circular>
+                      </div>
                       <div v-if="klienci.length">
                         <v-row>
                           <p class="mx-3 mt-3 mb-0 text-h6">Dane klienta</p>
                           <v-col class="mb-0 pb-0" cols="12" sm="12" md="12">
-
                             <v-text-field
                               readonly
                               dense
@@ -199,7 +201,34 @@
                           </v-col>
                         </v-row>
                       </div>
-                      <h4 v-else>Brak podpiętego klienta dla tego konta</h4>
+
+                      <div v-else>
+                        <p>Brak podpiętego klienta dla tego konta</p>
+                        <v-dialog v-model="dialogSetKlient">
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-btn color="primary" v-bind="attrs" v-on="on"
+                              >Wybierz klienta</v-btn
+                            >
+                          </template>
+                          <v-card>
+                            <v-card-title><p class="text-h6 font-weight-light text-uppercase">Wybierz klienta</p></v-card-title>
+                            <v-divider></v-divider>
+                            <v-card-text>
+                              <v-container>
+                                <v-data-table
+                                  dense
+                                  :single-select="true"
+                                  show-select
+                                  :headers="headers"
+                                  :items="konta"
+                                  :search="search"
+                                >
+                                </v-data-table>
+                              </v-container>
+                            </v-card-text>
+                          </v-card>
+                        </v-dialog>
+                      </div>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -270,6 +299,8 @@ export default {
       modalDate: false,
       dialog: false,
       dialogDelete: false,
+      dialogSetKlient: false,
+      loading: false,
       konta: [],
       grupyUzytkownikow: [],
       klienci: [],
@@ -449,6 +480,7 @@ export default {
 
     getKlienci(item) {
       let kontoId = { konto: item.id };
+      this.loading = true;
       this.$nextTick(() => {
         fetch("../sm-portal-server/uzytkownicy/konta/nadrzedni", {
           method: "POST",
@@ -464,6 +496,7 @@ export default {
               //TODO: handleErrors
             } else {
               this.klienci = json.dane.nadrzedni;
+              this.loading = false;
             }
           });
       });
