@@ -119,9 +119,87 @@
                         </v-col>
                       </v-row>
                     </v-col>
-                    <v-divider vertical class="my-10"></v-divider>
+                    <v-divider vertical class="mt-14 mb-10"></v-divider>
                     <v-col cols="6" sm="12" md="6">
+                      <div v-if="klienci.length">
+                        <v-row>
+                          <p class="mx-3 mt-3 mb-0 text-h6">Dane klienta</p>
+                          <v-col class="mb-0 pb-0" cols="12" sm="12" md="12">
 
+                            <v-text-field
+                              readonly
+                              dense
+                              outlined
+                              v-model="klienci[0].nrLicencji"
+                              label="Numer licencji"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col class="my-0 py-0" cols="6" sm="12" md="6">
+                            <v-text-field
+                              readonly
+                              dense
+                              outlined
+                              v-model="klienci[0].imie"
+                              label="Imię"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col class="my-0 py-0" cols="6" sm="12" md="6">
+                            <v-text-field
+                              readonly
+                              dense
+                              outlined
+                              v-model="klienci[0].nazwisko"
+                              label="Nazwisko"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col class="my-0 py-0" cols="12" sm="12" md="12">
+                            <v-text-field
+                              readonly
+                              dense
+                              outlined
+                              v-model="klienci[0].nazwaKklienta"
+                              label="Nazwa Klienta"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col class="my-0 py-0" cols="12" sm="12" md="12">
+                            <v-text-field
+                              readonly
+                              dense
+                              outlined
+                              v-model="klienci[0].nip"
+                              label="Numer NIP"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col class="my-0 py-0" cols="6" sm="12" md="6">
+                            <v-text-field
+                              readonly
+                              dense
+                              outlined
+                              v-model="klienci[0].email"
+                              label="Adres e-mail"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col class="my-0 py-0" cols="6" sm="12" md="6">
+                            <v-text-field
+                              readonly
+                              dense
+                              outlined
+                              v-model="klienci[0].telefonKontaktowy"
+                              label="Numer telefonu"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col class="my-0 py-0" cols="12" sm="12" md="12">
+                            <v-text-field
+                              readonly
+                              dense
+                              outlined
+                              v-model="klienci[0].adres"
+                              label="Adres"
+                            ></v-text-field>
+                          </v-col>
+                        </v-row>
+                      </div>
+                      <h4 v-else>Brak podpiętego klienta dla tego konta</h4>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -194,6 +272,7 @@ export default {
       dialogDelete: false,
       konta: [],
       grupyUzytkownikow: [],
+      klienci: [],
       limit: 20,
       liczbaDostepnychRekordow: 0,
       loaded: Boolean,
@@ -205,7 +284,12 @@ export default {
         { text: "Imię", value: "imie", width: "150px" },
         { text: "Nazwisko", value: "nazwisko", width: "150px" },
         { text: "Adres e-mail", value: "email" },
-        { text: "Zarządzaj użytkownikami", value: "actions", sortable: false, align: "right" },
+        {
+          text: "Zarządzaj użytkownikami",
+          value: "actions",
+          sortable: false,
+          align: "right",
+        },
       ],
       editedIndex: -1,
       editedItem: {
@@ -363,7 +447,7 @@ export default {
       });
     },
 
-    getKlienci(item){
+    getKlienci(item) {
       let kontoId = { konto: item.id };
       this.$nextTick(() => {
         fetch("../sm-portal-server/uzytkownicy/konta/nadrzedni", {
@@ -373,17 +457,16 @@ export default {
           },
           body: JSON.stringify(kontoId),
         })
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(JSON.stringify(this.editedItem.id));
-          if(json.blad){
-            //TODO: handleErrors
-          } else {
-            console.log("good: ");
-            console.log(JSON.stringify(json));
-          }
-        })
-      })
+          .then((res) => res.json())
+          .then((json) => {
+            console.log(JSON.stringify(this.editedItem.id));
+            if (json.blad) {
+              //TODO: handleErrors
+            } else {
+              this.klienci = json.dane.nadrzedni;
+            }
+          });
+      });
     },
 
     setGrupy() {
