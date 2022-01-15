@@ -63,38 +63,5 @@ export default {
 </script>
 
 <style>
-/* .navbar {
-  height: 46px;
-  position: relative;
-  background: #fff;
-  box-shadow: 0 3px 8px rgba(0, 21, 41, 0.15);
-  background-color: #fafafa;
-}
-.navbar .hamburger-container {
-  line-height: 46px;
-  height: 46px;
-  width: 46px;
-  float: left;
-  cursor: pointer;
-  transition: background 0.3s;
-  -webkit-tap-highlight-color: transparent;
-}
-.navbar .hambueger-container:hover {
-  background: rgba(0, 0, 0, 0.025);
-}
-.navbar .breadcrumb-container {
-  float: left;
-}
-.navbar .logout-button-container {
-  float: right;
-  height: 100%;
-  line-height: 46px;
-}
 
-.navbar .usermenu-container {
-  float: right;
-  line-height: 46px;
-  height: 100%;
-  padding-right: 3em;
-} */
 </style>

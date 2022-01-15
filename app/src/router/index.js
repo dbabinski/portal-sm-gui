@@ -57,6 +57,12 @@ import LayoutUser from '@/layouts/user'
         component: () => import('@/views/users/index'),
         name: 'Users',
         meta: { title: 'Użytkownicy', icon: 'documentation', affix: true }
+      },
+      {
+        path: '/admin/clients',
+        component: () => import('@/views/clients/index'),
+        name: 'Clients',
+        meta: { title: 'Klienci', affix: true }
       }
     ]
 
