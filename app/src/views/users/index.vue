@@ -203,7 +203,9 @@
                       </div>
 
                       <div v-else>
-                        <p>Brak podpiętego klienta dla tego konta</p>
+                        <p class="font-weight-medium mt-8">
+                          Brak podpiętego klienta dla tego konta
+                        </p>
                         <v-dialog v-model="dialogSetKlient">
                           <template v-slot:activator="{ on, attrs }">
                             <v-btn color="primary" v-bind="attrs" v-on="on"
@@ -211,7 +213,17 @@
                             >
                           </template>
                           <v-card>
-                            <v-card-title><p class="text-h6 font-weight-light text-uppercase">Wybierz klienta</p></v-card-title>
+                            <v-card-title
+                              ><p
+                                class="
+                                  text-h6
+                                  font-weight-medium
+                                  text-uppercase
+                                "
+                              >
+                                Wybierz klienta
+                              </p></v-card-title
+                            >
                             <v-divider></v-divider>
                             <v-card-text>
                               <v-container>
@@ -219,13 +231,176 @@
                                   dense
                                   :single-select="true"
                                   show-select
-                                  :headers="headers"
-                                  :items="konta"
-                                  :search="search"
+                                  :headers="headersKlienci"
+                                  :items="klienciWszyscy"
+                                  :search="searchKlienci"
+                                  v-model="klienci"
                                 >
+                                  <template v-slot:top>
+                                    <v-toolbar flat>
+                                      <v-toolbar-title>Szukaj</v-toolbar-title>
+
+                                      <v-text-field
+                                        single-line
+                                        hide-details
+                                        v-model="searchKlienci"
+                                        class="mr-12 pr-12 ml-1 pl-1"
+                                      />
+                                      <v-spacer></v-spacer>
+                                    </v-toolbar>
+                                  </template>
                                 </v-data-table>
                               </v-container>
                             </v-card-text>
+                          </v-card>
+                        </v-dialog>
+                        <v-dialog v-model="dialogSetNewKlient" max-width="700px">
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                              class="mx-2"
+                              color="primary"
+                              outlined
+                              v-bind="attrs"
+                              v-on="on"
+                              >Dodaj nowego klienta</v-btn
+                            >
+                          </template>
+                          <v-card>
+                            <v-card-title
+                              ><p
+                                class="text-h6 font-weight-light text-uppercase"
+                              >
+                                Dodaj klienta
+                              </p>
+                            </v-card-title>
+                            <v-divider></v-divider>
+                            <v-card-text>
+                              <v-container>
+                                <div>
+                                  <v-row>
+                                    <p class="mx-3 mt-3 mb-0 text-h6">
+                                      Dane klienta
+                                    </p>
+                                    <v-col
+                                      class="mb-0 pb-0"
+                                      cols="12"
+                                      sm="12"
+                                      md="12"
+                                    >
+                                      <v-text-field
+                                        readonly
+                                        dense
+                                        outlined
+                                        v-model="klienci.nrLicencji"
+                                        label="Numer licencji"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col
+                                      class="my-0 py-0"
+                                      cols="6"
+                                      sm="12"
+                                      md="6"
+                                    >
+                                      <v-text-field
+                                        readonly
+                                        dense
+                                        outlined
+                                        v-model="klienci.imie"
+                                        label="Imię"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col
+                                      class="my-0 py-0"
+                                      cols="6"
+                                      sm="12"
+                                      md="6"
+                                    >
+                                      <v-text-field
+                                        readonly
+                                        dense
+                                        outlined
+                                        v-model="klienci.nazwisko"
+                                        label="Nazwisko"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col
+                                      class="my-0 py-0"
+                                      cols="12"
+                                      sm="12"
+                                      md="12"
+                                    >
+                                      <v-text-field
+                                        readonly
+                                        dense
+                                        outlined
+                                        v-model="klienci.nazwaKklienta"
+                                        label="Nazwa Klienta"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col
+                                      class="my-0 py-0"
+                                      cols="12"
+                                      sm="12"
+                                      md="12"
+                                    >
+                                      <v-text-field
+                                        readonly
+                                        dense
+                                        outlined
+                                        v-model="klienci.nip"
+                                        label="Numer NIP"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col
+                                      class="my-0 py-0"
+                                      cols="6"
+                                      sm="12"
+                                      md="6"
+                                    >
+                                      <v-text-field
+                                        readonly
+                                        dense
+                                        outlined
+                                        v-model="klienci.email"
+                                        label="Adres e-mail"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col
+                                      class="my-0 py-0"
+                                      cols="6"
+                                      sm="12"
+                                      md="6"
+                                    >
+                                      <v-text-field
+                                        readonly
+                                        dense
+                                        outlined
+                                        v-model="klienci.telefonKontaktowy"
+                                        label="Numer telefonu"
+                                      ></v-text-field>
+                                    </v-col>
+                                    <v-col
+                                      class="my-0 py-0"
+                                      cols="12"
+                                      sm="12"
+                                      md="12"
+                                    >
+                                      <v-text-field
+                                        readonly
+                                        dense
+                                        outlined
+                                        v-model="klienci.adres"
+                                        label="Adres"
+                                      ></v-text-field>
+                                    </v-col>
+                                  </v-row>
+                                </div>
+                              </v-container>
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn color="blue darken-1" text>Zapisz Klienta</v-btn>
+                            </v-card-actions>
                           </v-card>
                         </v-dialog>
                       </div>
@@ -300,14 +475,27 @@ export default {
       dialog: false,
       dialogDelete: false,
       dialogSetKlient: false,
+      dialogSetNewKlient: false,
       loading: false,
       konta: [],
       grupyUzytkownikow: [],
       klienci: [],
+      jsonKlient: [],
+      klienciWszyscy: [],
       limit: 20,
       liczbaDostepnychRekordow: 0,
       loaded: Boolean,
       search: "",
+      searchKlienci: "",
+      headersKlienci: [
+        { text: "Nr licencji", align: "start", value: "nrLicencji" },
+        { text: "NIP", value: "nip" },
+        { text: "Miejscowość", value: "miejscowosc" },
+        { text: "Nazwa Klienta", value: "nazwaKklienta" },
+        { text: "Imię", value: "imie" },
+        { text: "Nazwisko", value: "nazwisko" },
+        { text: "Telefon", value: "telefonKontaktowy" },
+      ],
       headers: [
         { text: "ID", align: "start", value: "id" },
         { text: "Login", value: "login", width: "150px" },
@@ -400,7 +588,7 @@ export default {
       if (grupaOpis) {
         if (grupaOpis === "Administratorzy") return "blue";
         if (grupaOpis === "Użytkownicy") return "green";
-      } else return "whitedee";
+      } else return "white";
     },
 
     loadData() {
@@ -409,6 +597,8 @@ export default {
 
       this.grupyUzytkownikow = [];
       this.getGrupy();
+
+      this.getWszyscyKlienci();
     },
     refreshData() {
       this.appendData(true);
@@ -491,11 +681,44 @@ export default {
         })
           .then((res) => res.json())
           .then((json) => {
-            console.log(JSON.stringify(this.editedItem.id));
+            //console.log(JSON.stringify(this.editedItem.id));
             if (json.blad) {
               //TODO: handleErrors
             } else {
               this.klienci = json.dane.nadrzedni;
+              this.loading = false;
+            }
+          });
+      });
+    },
+
+    getWszyscyKlienci(refresh) {
+      this.loading = true;
+      let params = {
+        filter: "",
+        limit: this.limit,
+        aktywne: "",
+        offset: this.klienci.lenght,
+        refresh: refresh != undefined ? refresh : false,
+      };
+      this.klienci = [];
+      this.$nextTick(() => {
+        fetch("../sm-portal-server/klienci/lista", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(params),
+        })
+          .then((res) => res.json())
+          .then((json) => {
+            //console.log(json);
+            if (json.blad) {
+              //TODO: handleErrors
+            } else {
+              json.dane.klienci.forEach((klient) => {
+                this.klienciWszyscy.push(klient);
+              });
               this.loading = false;
             }
           });
@@ -537,7 +760,7 @@ export default {
       })
         .then((res) => res.json())
         .then((json) => {
-          console.log(JSON.stringify(this.editedItem));
+          //console.log(JSON.stringify(this.editedItem));
           if (json.blad) {
             //TODO: handleErrors
           } else {
@@ -550,6 +773,29 @@ export default {
             this.close();
           }
           this.refreshData();
+        });
+
+      this.jsonKlient = {
+        kontoId: this.editedItem.id,
+        klient: this.klienci[0],
+        nadrzedny: true,
+      };
+      console.log(this.jsonKlient);
+      fetch("../sm-portal-server/klienci/do-konta/", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(this.jsonKlient),
+      })
+        .then((res) => res.json)
+        .then((json) => {
+          if (json.blad) {
+            console.log("Błąd: " + json.blad);
+          } else {
+            console.log("Dodano klienta do konta: " + json.komunikat);
+            console.log(JSON.stringify(this.jsonKlient));
+          }
         });
     },
 
