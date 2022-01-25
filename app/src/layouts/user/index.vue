@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" class="app-wrapper">
     <v-app-bar app color="white" flat>
       <app-bar-user></app-bar-user>
     </v-app-bar>
@@ -9,12 +9,7 @@
           <v-col cols="2" class="pl-12 ml-12">
             <v-sheet rounded="lg">
               <v-list color="transparent">
-                <v-list-item v-for="n in 5" :key="n" link>
-                  <v-list-item-content>
-                    <v-list-item-title> List Item {{ n }} </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-
+                <sidebar-menu />
                 <v-divider class="my-2"></v-divider>
 
                 <v-list-item link color="grey lighten-4">
@@ -25,10 +20,9 @@
               </v-list>
             </v-sheet>
           </v-col>
-
           <v-col>
             <v-sheet min-height="70vh" rounded="lg">
-              <app-main></app-main>
+              <app-main-user></app-main-user>
             </v-sheet>
           </v-col>
         </v-row>
@@ -38,14 +32,14 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {};
   },
 
   components: {
-    AppMain: () => import("./components/AppMain.vue"),
+    SidebarMenu: () => import("./components/SideMenu/index.vue"),
+    AppMainUser: () => import("./components/AppMainUser.vue"),
     AppBarUser: () => import("./components/AppBarUser.vue"),
   },
 

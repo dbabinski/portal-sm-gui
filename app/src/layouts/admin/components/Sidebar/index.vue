@@ -42,7 +42,7 @@ export default {
         },
         {
           index: 4,
-          title: "Wpisy",
+          title: "Artykuły",
           path: "/admin/articles",
           icon: "fas fa-file",
         },

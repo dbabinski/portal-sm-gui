@@ -5,7 +5,7 @@
       :is-active="sidebar.opened"
       @click="toggleSidebar"
     />
-    <v-btn text outlined class="ml-1">Strona Główna</v-btn>
+    <v-btn text outlined class="ml-1" to="/" >Strona Główna</v-btn>
     <v-divider vertical inset class="ml-6" ></v-divider>
     <breadcrumb class="breadcrumb-container" />
     <v-spacer></v-spacer>

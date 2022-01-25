@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'AppMain',
+  name: 'AppMainUser',
   computed: {
       key() {
           return this.$route.path
