@@ -34,7 +34,7 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col col="6" sm="12" md="6">
+                    <v-col cols="6" sm="12" md="6">
                       <v-row>
                         <v-col cols="5" sm="12" md="5">
                           <v-text-field

@@ -5,6 +5,7 @@ const state = {
   permissions: {},
   token: "",
   scope: "",
+  id: ""
 }
 
 const mutations = {
@@ -15,6 +16,7 @@ const mutations = {
       state.permissions = cookie.permissions;
       state.token = cookie.token;
       state.token = cookie.scope;
+      state.id = cookie.id;
     }
   },
   login(state, payload) {
@@ -22,6 +24,7 @@ const mutations = {
     state.permissions = payload.permissions;
     state.token = payload.token;
     state.scope = payload.scope;
+    state.id = payload.id;
   },
   logout(state) {
     localStorage.removeItem("sm-portal.store");
@@ -29,6 +32,7 @@ const mutations = {
     state.permissions = {};
     state.token = "";
     state.scope = "";
+    state.id = "";
   },
 }
 

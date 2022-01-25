@@ -31,6 +31,12 @@ import LayoutUser from '@/layouts/user'
         component: () => import('@/views/dashboard/user'),
         name: 'Panel Klienta',
         meta: { title: 'Panel Klienta', affix: true }
+      },
+      {  
+        path: '/articles',
+        component: () => import('@/views/articles/user/index'),
+        name: 'Artykuły',
+        meta: { title: 'Artykuły', affix: true }
       }  
     ]  
   },
@@ -63,6 +69,12 @@ import LayoutUser from '@/layouts/user'
         component: () => import('@/views/clients/index'),
         name: 'Clients',
         meta: { title: 'Klienci', affix: true }
+      },
+      {
+        path: '/admin/articles',
+        component: () => import('@/views/articles/admin/index'),
+        name: 'Articles',
+        meta: { title: 'Wpisy', affix: true }
       }
     ]
 

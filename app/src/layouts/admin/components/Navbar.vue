@@ -5,9 +5,11 @@
       :is-active="sidebar.opened"
       @click="toggleSidebar"
     />
+    <v-btn text outlined class="ml-1">Strona Główna</v-btn>
+    <v-divider vertical inset class="ml-6" ></v-divider>
     <breadcrumb class="breadcrumb-container" />
     <v-spacer></v-spacer>
-    <user-menu class="usermenu-container"/>
+    <user-menu class="usermenu-container" />
     <!-- <v-btn 
     depressed
     class="logout-button-container" 
@@ -26,12 +28,10 @@ export default {
   name: "Navbar",
   components: {
     Breadcrumb: () => import("@/components/Breadcrumb"),
-    UserMenu: () => import("@/components/UserMenu")
+    UserMenu: () => import("@/components/UserMenu"),
   },
   data() {
-    return {
-
-    };
+    return {};
   },
   computed: {
     ...mapGetters(["sidebar"]),
@@ -63,5 +63,4 @@ export default {
 </script>
 
 <style>
-
 </style>

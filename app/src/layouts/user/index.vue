@@ -1,47 +1,57 @@
 <template>
-  <v-app>
-    <h1>Layout Dash - Klient</h1>
-    <v-card-text>
-      <v-btn @click.native="logout">Wyloguj</v-btn>
-    </v-card-text>
-    <v-card>Panel Klienta</v-card>
+  <v-app id="inspire">
+    <v-app-bar app color="white" flat>
+      <app-bar-user></app-bar-user>
+    </v-app-bar>
+    <v-main class="grey lighten-3">
+      <v-container>
+        <v-row>
+          <v-col cols="2" class="pl-12 ml-12">
+            <v-sheet rounded="lg">
+              <v-list color="transparent">
+                <v-list-item v-for="n in 5" :key="n" link>
+                  <v-list-item-content>
+                    <v-list-item-title> List Item {{ n }} </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-divider class="my-2"></v-divider>
+
+                <v-list-item link color="grey lighten-4">
+                  <v-list-item-content>
+                    <v-list-item-title> Refresh </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-sheet>
+          </v-col>
+
+          <v-col>
+            <v-sheet min-height="70vh" rounded="lg">
+              <app-main></app-main>
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
   </v-app>
 </template>
 
 <script>
-import router from "@/router/index";
-import store from "@/store/index";
 
 export default {
   data() {
-    return {
-    }
+    return {};
   },
 
-  computed: {
-
+  components: {
+    AppMain: () => import("./components/AppMain.vue"),
+    AppBarUser: () => import("./components/AppBarUser.vue"),
   },
 
-  methods: {
+  computed: {},
 
-
-    async logout() {
-      //   const self = this;
-      fetch("/sm-portal-server/autentykacja/logout")
-        .then((res) => {
-          router.push(`/login?redirect=${this.$route.fullPath}`);
-          //   self.logged = false;
-          return res.json();
-        })
-        // .then((json) => {
-        //   app.toast(json.komunikat);
-        // })
-        .catch((error) => {
-          console.log(error);
-        });
-      await store.dispatch("logout");
-    },
-  },
+  methods: {},
 };
 </script>
 

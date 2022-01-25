@@ -404,6 +404,7 @@ export default {
               permissions: json.permissions,
               token: json.token,
               scope: json.scope,
+              id: json.idKonta,
             });
             // toast(json.komunikat);
             // this.clear();

@@ -18,6 +18,9 @@ const getters = {
     },
     sidebar(state) {
       return state.app.sidebar;
+    },
+    id(state) {
+      return state.user.id;
     }
 }
 export default getters
