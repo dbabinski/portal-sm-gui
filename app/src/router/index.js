@@ -37,7 +37,13 @@ import LayoutUser from '@/layouts/user'
         component: () => import('@/views/articles/user/index'),
         name: 'Artykuły',
         meta: { title: 'Artykuły', affix: true }
-      }  
+      },
+      {  
+        path: '/articles/*',
+        component: () => import('@/views/articles/user/components/ArticleView'),
+        name: 'Artykuły',
+        meta: { title: 'Artykuły', affix: true }
+      } 
     ]  
   },
 

@@ -12,13 +12,6 @@
       />
     </div>
   </v-container>
-  <!-- <v-container>
-    <div >
-      <div class="d-flex justify-space-between" v-for="(artykul, index) in artykuly" :key="index">
-        <article-card :data="artykul" />
-      </div>
-    </div>
-  </v-container> -->
 </template>
 
 <script>
