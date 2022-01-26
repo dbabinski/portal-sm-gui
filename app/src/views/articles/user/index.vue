@@ -2,11 +2,17 @@
   <v-container>
     <div>
       <div class="text-h6 text-uppercase text-left mb-3">Aktualności</div>
-      <v-divider class="mb-12"/>
-      <article-card class="mx-auto" :data="artykul" v-for="(artykul, index) in artykuly" :key="index" />
+      <v-divider class="mb-12" />
+      <article-card
+        class="mx-auto"
+        :color="bgColor"
+        :data="artykul"
+        v-for="(artykul, index) in artykuly"
+        :key="index"
+      />
     </div>
   </v-container>
-    <!-- <v-container>
+  <!-- <v-container>
     <div >
       <div class="d-flex justify-space-between" v-for="(artykul, index) in artykuly" :key="index">
         <article-card :data="artykul" />
@@ -16,7 +22,6 @@
 </template>
 
 <script>
-
 export default {
   name: "ArticlesUser",
   components: {
@@ -24,12 +29,15 @@ export default {
   },
   data() {
     return {
+      bgColor: "#00CC" + ((Math.random() * 0xff) << 0).toString(16),
       artykuly: [],
     };
   },
   created() {
     this.loadData();
   },
+
+  mounted() {},
 
   computed: {},
 
@@ -56,6 +64,11 @@ export default {
             }
           });
       });
+    },
+
+    generator: function () {
+      this.mycolor = "#" + ((Math.random() * 0xffffff) << 0).toString(16);
+      document.body.style.background = this.mycolor;
     },
   },
 };

@@ -1,12 +1,12 @@
 <template>
-  <v-card class="my-5" max-width="">
-    <v-img
+  <v-card class="my-5" max-width="1000">
+    <v-card
       class="white--text align-end"
-      height="200px"
-      src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+      height="150px"
+      :color="color"
     >
       <v-card-title>{{ data.tytul }}</v-card-title>
-    </v-img>
+    </v-card>
 
     <v-card-subtitle class="text-left pb-0">{{ data.autor }} </v-card-subtitle>
 
@@ -18,7 +18,7 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn color="primary" text> Czyta dalej .. </v-btn>
+      <v-btn outlined color="primary" text> Czyta dalej .. </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -32,6 +32,7 @@ export default {
   },
   props: {
       data: Object,
+      color: String,
   }
 };
 </script>
