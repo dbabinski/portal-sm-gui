@@ -22,7 +22,7 @@ export default {
         {
           index: 0,
           title: "Panel klienta",
-          path: "/",
+          path: "/dashboard-user",
           icon: "fas fa-columns",
         },
         {

@@ -24,25 +24,31 @@ import LayoutUser from '@/layouts/user'
   {
     path: '/',
     component: LayoutUser,
-    redirect: 'dashboard-user',
+    redirect: 'main-page',
     children: [
+      {  
+        path: '/',
+        component: () => import('@/views/mainPage/index'),
+        name: 'stronaGlowna',
+        meta: { title: 'Strona Główna', affix: true }
+      },
       {  
         path: '/dashboard-user',
         component: () => import('@/views/dashboard/user'),
-        name: 'Panel Klienta',
+        name: 'panelKlienta',
         meta: { title: 'Panel Klienta', affix: true }
       },
       {  
         path: '/articles',
         component: () => import('@/views/articles/user/index'),
-        name: 'Artykuły',
+        name: 'artykulyWidok',
         meta: { title: 'Artykuły', affix: true }
       },
       {  
         path: '/articles/*',
         component: () => import('@/views/articles/user/components/ArticleView'),
-        name: 'Artykuły',
-        meta: { title: 'Artykuły', affix: true }
+        name: 'artykuly',
+        meta: { title: 'Artykułyy', affix: true }
       } 
     ]  
   },
@@ -51,41 +57,41 @@ import LayoutUser from '@/layouts/user'
     path: '/admin',
     component: LayoutAdmin,
     redirect: '/admin/dashboard',
+    name: 'admin',
     children: [
       {
         path: '/admin/dashboard',
         component: () => import('@/views/dashboard/index'),
-        name: 'Panel Administratora',
+        name: 'panelAdministratora',
         meta: { title: 'Panel Administratora', affix: true }
       },
       {
         path: '/admin/documentation',
         component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
+        name: 'documentation',
         meta: { title: 'Dokumentacja', icon: 'documentation', affix: true }
       },
       {
         path: '/admin/users',
         component: () => import('@/views/users/index'),
-        name: 'Users',
+        name: 'users',
         meta: { title: 'Użytkownicy', icon: 'documentation', affix: true }
       },
       {
         path: '/admin/clients',
         component: () => import('@/views/clients/index'),
-        name: 'Clients',
+        name: 'clients',
         meta: { title: 'Klienci', affix: true }
       },
       {
         path: '/admin/articles',
         component: () => import('@/views/articles/admin/index'),
-        name: 'Articles',
+        name: 'articles',
         meta: { title: 'Wpisy', affix: true }
-      }
+      },
+      
     ]
-
   },
-
   {
     path: '/login',
     component: () => import('@/views/login/index'),
