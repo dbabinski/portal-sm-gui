@@ -27,7 +27,7 @@ const mutations = {
     state.id = payload.id;
   },
   logout(state) {
-    localStorage.removeItem("sm-portal.store");
+    localStorage.removeItem('sm-portal.store');
     state.email = "";
     state.permissions = {};
     state.token = "";

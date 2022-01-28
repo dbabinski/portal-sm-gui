@@ -34,7 +34,7 @@ export function setCookie (name, value) {
   document.cookie = name + "=" + value;
 }
 
-export function getCookie (cname) {
+export function getCookie (cname = 'sm-portal.meta') {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(";");

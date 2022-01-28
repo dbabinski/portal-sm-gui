@@ -1,6 +1,6 @@
 <template>
   <v-container class="py-0 fill-height">
-    <v-spacer></v-spacer>
+
     <v-spacer></v-spacer>
     <div v-for="(item, index) in items" :key="index">
       <menu-item :data="item" />
@@ -18,17 +18,20 @@
       ></v-text-field>
     </v-responsive>
 
-    <user-menu class="ml-5 mr-2" color="grey darken-1" size="32"></user-menu>
-    <user-name class="mx-1" />
-    <v-divider vertical inset></v-divider>
+    <user-menu v-show="this.logged" class="ml-5 mr-2" color="grey darken-1" size="32"></user-menu>
+    <user-name v-show="this.logged" class="mx-1" />
+    
+    <v-divider vertical inset class="mx-2"></v-divider>
 
-    <v-btn text class="mx-1" @click.native="logout">Wyloguj</v-btn>
+    <v-btn text class="mx-1" @click.native="logout">{{this.label}}</v-btn>
   </v-container>
 </template>
 
 <script>
 import router from "@/router/index";
 import store from "@/store/index";
+// import getCookie from "@/lib/cookies.js";
+// import isNull from "@/lib/utils.js";
 
 export default {
   name: "AppBarUser",
@@ -40,6 +43,8 @@ export default {
 
   data() {
     return {
+      label: "test",
+      logged: false,
       items: [
         {
           index: 0,
@@ -54,25 +59,46 @@ export default {
         {
           index: 2,
           title: "Panel Klienta",
-          path: "/user",
+          path: "/dashboard-user",
         },
         {
           index: 3,
           title: "Test",
           path: "/shop",
-        },
-        
+        }
       ],
     };
   },
-
+  created(){
+    this.isLogged();
+    this.loggin();
+  },
   computed: {
     routes() {
       return this.$router.options.routes;
-    },
+    }
   },
 
   methods: {
+    loggin(){
+      let logged = this.isLogged();
+      if (logged) {
+        this.label = "Wyloguj";
+      } else {
+        this.label = "Zaloguj";
+      }
+    },
+
+    isLogged(){
+      let s = store.getters.token;
+      if(s === null || s === undefined || s === "") {
+       this.logged = false;
+       return false;
+      } else {
+        this.logged = true;
+        return true;
+      }
+    },
     async logout() {
       fetch("/sm-portal-server/autentykacja/logout")
         .then((res) => {
@@ -82,7 +108,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      await store.dispatch("logout");
+      await store.dispatch("user/logout");
     },
   },
 };

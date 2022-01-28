@@ -12,31 +12,30 @@
 
 <script>
 export default {
-  
   components: {
     SidebarmenuItem: () => import("./SidemenuItem.vue"),
   },
   data() {
     return {
-        items: [
+      items: [
+        {
+          index: 1,
+          title: "Aktualności",
+          path: "/articles",
+          icon: "fas fa-user",
+        },
         {
           index: 0,
           title: "Panel klienta",
           path: "/dashboard-user",
           icon: "fas fa-columns",
         },
-        {
-          index: 1,
-          title: "Aktualności",
-          path: "/articles",
-          icon: "fas fa-user",
-        },]
+      ],
     };
   },
 };
 </script>
 
 <style>
-
 </style>
 

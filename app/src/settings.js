@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'SoftMedica - Portal',
+    title: 'SMPortal',
     
     /**
      * @type {boolean} true | false

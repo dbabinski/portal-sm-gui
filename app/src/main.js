@@ -34,7 +34,7 @@ new Vue({
     });
 
     this.$store.subscribe((mutation, state) => {
-      if (mutation == 'user/initialiseStore' || mutation.type == "user/login" || mutation.type == "user/logout") {
+      if (mutation == 'user/initialiseStore' || mutation.type == "user/login" ) {
           localStorage.setItem("sm-portal.store", JSON.stringify(state));
       }
     });
