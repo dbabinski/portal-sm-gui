@@ -14,7 +14,7 @@ const mutations = {
     if (cookie != null) {
       state.email = cookie.email;
       state.permissions = cookie.permissions;
-      state.token = cookie.token;
+      state.token = cookie.jti;
       state.token = cookie.scope;
       state.id = cookie.id;
     }

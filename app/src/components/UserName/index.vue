@@ -6,6 +6,7 @@
 
 <script>
 import store from "@/store/index";
+import { getJSON } from "@/lib/cookies";
 
 export default {
   name: "UserName",
@@ -29,8 +30,11 @@ export default {
 
   methods: {
     loadData() {
-      this.storeData.id = store.getters.id;
-      this.storeData.email = store.getters.email;
+      // this.storeData.id = store.getters.id;
+      // this.storeData.email = store.getters.email;
+      let cookie = getJSON();
+      this.storeData.id =  cookie.id;
+      this.storeData.email = cookie.email;
     },
     async appendData() {
       if (store.getters.id == undefined) {

@@ -1,6 +1,5 @@
 <template>
   <v-container class="py-0 fill-height">
-
     <v-spacer></v-spacer>
     <div v-for="(item, index) in items" :key="index">
       <menu-item :data="item" />
@@ -18,19 +17,24 @@
       ></v-text-field>
     </v-responsive>
 
-    <user-menu v-show="this.logged" class="ml-5 mr-2" color="grey darken-1" size="32"></user-menu>
+    <user-menu
+      v-show="this.logged"
+      class="ml-5 mr-2"
+      color="grey darken-1"
+      size="32"
+    ></user-menu>
     <user-name v-show="this.logged" class="mx-1" />
-    
+
     <v-divider vertical inset class="mx-2"></v-divider>
 
-    <v-btn text class="mx-1" @click.native="logout">{{this.label}}</v-btn>
+    <v-btn text class="mx-1" @click.native="logout">{{ this.label }}</v-btn>
   </v-container>
 </template>
 
 <script>
 import router from "@/router/index";
 import store from "@/store/index";
-// import getCookie from "@/lib/cookies.js";
+// import { getJSON } from "@/lib/cookies";
 // import isNull from "@/lib/utils.js";
 
 export default {
@@ -65,22 +69,22 @@ export default {
           index: 3,
           title: "Test",
           path: "/shop",
-        }
+        },
       ],
     };
   },
-  created(){
+  created() {
     this.isLogged();
     this.loggin();
   },
   computed: {
     routes() {
       return this.$router.options.routes;
-    }
+    },
   },
 
   methods: {
-    loggin(){
+    loggin() {
       let logged = this.isLogged();
       if (logged) {
         this.label = "Wyloguj";
@@ -89,11 +93,11 @@ export default {
       }
     },
 
-    isLogged(){
-      let s = store.getters.token;
-      if(s === null || s === undefined || s === "") {
-       this.logged = false;
-       return false;
+    isLogged() {
+      let s = store.getters.isLogged;
+      if (s === null || s === undefined || s === "" || s === false) {
+        this.logged = false;
+        return false;
       } else {
         this.logged = true;
         return true;
@@ -103,6 +107,7 @@ export default {
       fetch("/sm-portal-server/autentykacja/logout")
         .then((res) => {
           router.push(`/login?redirect=${this.$route.fullPath}`);
+          // router.go();
           return res.json();
         })
         .catch((error) => {

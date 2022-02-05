@@ -53,7 +53,7 @@
                               >
                             </v-col>
                             <v-col cols="12" sm="6">
-                              <v-btn text color="blue darken-2"
+                              <v-btn disabled text color="blue darken-2"
                                 >Zapomniałem hasła</v-btn
                               >
                             </v-col>
@@ -257,7 +257,7 @@
                             ></div
                           ></v-row>
                           <v-row align="center" justify="center">
-                            <v-btn color="blue" dark tile
+                            <v-btn color="blue" dark tile @click="singup"
                               >Zarejestruj się</v-btn
                             >
                           </v-row>
@@ -274,7 +274,7 @@
                       </h4>
                       <v-row class="mt-8">
                         <v-col cols="12" sm="12">
-                          <v-textarea
+                          <v-text-field
                             label="Nazwa Klienta"
                             outlined
                             color="blue"
@@ -282,7 +282,6 @@
                             v-model.trim="daneRejestracji.nazwaKlienta"
                             ref="nazwa_klienta"
                           />
-
                           <v-text-field
                             label="Ulica"
                             outlined
@@ -291,6 +290,28 @@
                             v-model.trim="daneRejestracji.ulica"
                             dense
                             ref="ulica"
+                          />
+                        </v-col>
+                        <v-col class="my-0 py-0" cols="6" sm="6" md="6">
+                          <v-text-field
+                            label="Kod pocztowy"
+                            outlined
+                            color="blue"
+                            name="kod_pocztowy"
+                            v-model.trim="daneRejestracji.kod_pocztowy"
+                            dense
+                            ref="kod_pocztowy"
+                          />
+                        </v-col>
+                        <v-col class="my-0 py-0" cols="6" sm="6" md="6">
+                          <v-text-field
+                            label="Miejscowość"
+                            outlined
+                            color="blue"
+                            name="miejscowosc"
+                            v-model.trim="daneRejestracji.miejscowosc"
+                            dense
+                            ref="miejscowosc"
                           />
                         </v-col>
                       </v-row>
@@ -318,7 +339,7 @@
 import { isNull } from "@/lib/utils";
 import store from "@/store";
 import router from "@/router/index";
-// import  toast  from '@/main'
+// import toast  from '@/main'
 
 export default {
   data() {
@@ -334,17 +355,21 @@ export default {
         haslo: null,
       },
       daneRejestracji: {
-        nip: null,
-        email: null,
-        haslo: null,
-        reHaslo: null,
-        telefon: null,
-        nazwa_firmy: null,
-        ulica: null,
-        kod_pocztowy: null,
-        miejscowosc: null,
+        nazwaKlienta: "",
+        nip: "",
+        email: "",
+        haslo: "",
+        reHaslo: "",
+        telefon: "",
+        nazwa_firmy: "",
+        ulica: "",
+        kod_pocztowy: "",
+        miejscowosc: "",
+        nadrzedne: true,
+        idTypDokumentuTozsamosci: "1",
+        samodzielnie: true,
+        idGrupa: 20,
       },
-      nadrzedne: true,
       recaptchaWidget: null,
     };
   },
@@ -406,13 +431,37 @@ export default {
               scope: json.scope,
               id: json.idKonta,
             });
-            // toast(json.komunikat);
+            //TODO: toast(json.komunikat);
             // this.clear();
           }
         })
         .catch((error) => {
           this.daneLogowania.login = null;
           this.daneLogowania.haslo = null;
+          console.log(error);
+        });
+    },
+
+    singup() {
+      let params = this.daneRejestracji;
+      this.daneRejestracji.nazwa_firmy = this.daneRejestracji.nazwaKlienta;
+      fetch("/sm-portal-server/klienci", {
+        method: "POST",
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+        body: JSON.stringify(params),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((json) => {
+          if (json.blad === true) {
+            console.log(params);
+            console.log(json.komunikat);
+          } else {
+            console.log(params);
+          }
+        })
+        .catch((error) => {
           console.log(error);
         });
     },
