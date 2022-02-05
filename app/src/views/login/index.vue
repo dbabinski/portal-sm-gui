@@ -53,8 +53,8 @@
                               >
                             </v-col>
                             <v-col cols="12" sm="6">
-                              <v-btn disabled text color="blue darken-2"
-                                >Zapomniałem hasła</v-btn
+                              <v-btn text color="blue darken-2" to="/"
+                                >Strona głowna</v-btn
                               >
                             </v-col>
                           </v-row>

@@ -1,6 +1,8 @@
 <template>
   <v-container class="py-0 fill-height">
-    <v-spacer></v-spacer>
+    <v-btn v-show="this.admin" outlined class="ml-12 mr-0" to="/admin" >Panel Administratora</v-btn>
+    <v-spacer class="mx-0 px-0" v-show="this.admin"></v-spacer>
+    <v-spacer v-show="!this.admin"></v-spacer>
     <div v-for="(item, index) in items" :key="index">
       <menu-item :data="item" />
     </div>
@@ -49,6 +51,7 @@ export default {
     return {
       label: "test",
       logged: false,
+      admin: false,
       items: [
         {
           index: 0,
@@ -76,6 +79,7 @@ export default {
   created() {
     this.isLogged();
     this.loggin();
+    this.isAdmin();
   },
   computed: {
     routes() {
@@ -101,6 +105,24 @@ export default {
       } else {
         this.logged = true;
         return true;
+      }
+    },
+    isAdmin(){
+      let s = store.getters.scope;
+      if (s === null || s === undefined || s === "" || s === false) {
+        this.admin = false;
+        console.log("admin: " + s);
+        return false;
+      } else {
+        if ( s === 19 ) {
+        this.admin = true;
+        console.log("admin: " + s);
+        return true;
+        } 
+        else {
+          this.admin = false;
+          return false;
+        }
       }
     },
     async logout() {
